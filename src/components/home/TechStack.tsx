@@ -12,26 +12,37 @@ const STACK = [
 
 export function TechStack() {
   return (
-    <section className="py-14 border-y border-[var(--border)]" aria-label="Tech stack">
+    <section className="py-16 border-y border-[var(--border)]" aria-label="Tech stack">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Terminal-style heading */}
-        <div className="flex items-center gap-2 mb-6">
-          <span className="font-mono text-xs text-mint">&gt;</span>
-          <span className="font-mono text-xs text-[var(--text-secondary)] uppercase tracking-widest">
-            hands-on with
+
+        {/* Section label + heading */}
+        <div className="mb-8">
+          <span
+            className="block font-mono text-xs text-coral tracking-widest uppercase mb-2"
+          >
+            // stack
           </span>
-          <span className="w-2 h-3 bg-mint/60 animate-blink rounded-sm" aria-hidden="true" />
+          <h2
+            className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
+            What I build with
+          </h2>
         </div>
-        <div className="flex flex-wrap gap-2">
+
+        <div className="flex flex-wrap gap-3">
           {STACK.map(({ name, color }) => (
             <span
               key={name}
-              className="group inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] font-mono text-xs text-[var(--text-primary)] hover:border-coral/40 transition-colors duration-150 cursor-default"
+              className="group inline-flex items-center gap-2.5 px-4 py-2 rounded-lg glass font-mono text-sm text-[var(--text-primary)] hover:border-coral/30 transition-colors duration-150 cursor-default"
             >
-              {/* Language color dot */}
+              {/* Language color dot with glow */}
               <span
-                className="w-2 h-2 rounded-full flex-shrink-0"
-                style={{ backgroundColor: color, boxShadow: `0 0 6px ${color}80` }}
+                className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                style={{
+                  backgroundColor: color,
+                  boxShadow: `0 0 8px ${color}99, 0 0 16px ${color}44`,
+                }}
                 aria-hidden="true"
               />
               {name}

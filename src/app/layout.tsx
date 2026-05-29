@@ -1,21 +1,27 @@
 import type { Metadata } from 'next'
-import { JetBrains_Mono, IBM_Plex_Sans } from 'next/font/google'
+import { Space_Grotesk, DM_Sans, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/layout/ThemeProvider'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { JsonLd } from '@/components/JsonLd'
 
+const spaceGrotesk = Space_Grotesk({
+  variable: '--font-space-grotesk',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+})
+
+const dmSans = DM_Sans({
+  variable: '--font-dm-sans',
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+})
+
 const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains',
   subsets: ['latin'],
   weight: ['400', '500', '700'],
-})
-
-const ibmPlexSans = IBM_Plex_Sans({
-  variable: '--font-ibm',
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
 })
 
 export const metadata: Metadata = {
@@ -36,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${jetbrainsMono.variable} ${ibmPlexSans.variable} dark`}
+      className={`${spaceGrotesk.variable} ${dmSans.variable} ${jetbrainsMono.variable} dark`}
       suppressHydrationWarning
     >
       <body className="min-h-dvh flex flex-col antialiased">

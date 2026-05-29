@@ -25,7 +25,15 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-[var(--border)] bg-[var(--bg)]/80 backdrop-blur-xl">
+    <header
+      className="sticky top-0 z-40 w-full border-b border-[var(--border)]"
+      style={{
+        backgroundColor: 'rgba(6,6,10,0.75)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+      }}
+    >
+      {/* Light mode override via CSS — use a wrapper with conditional class */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
         {/* Logo */}
@@ -104,7 +112,14 @@ export function Header() {
 
       {/* Mobile nav drawer */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-[var(--border)] bg-[var(--bg)] px-4 py-4 space-y-1">
+        <div
+          className="md:hidden border-t border-[var(--border)] px-4 py-4 space-y-1"
+          style={{
+            backgroundColor: 'rgba(6,6,10,0.92)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+          }}
+        >
           {NAV.map(({ href, label }) => {
             const active = pathname === href
             return (

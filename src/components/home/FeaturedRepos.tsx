@@ -27,20 +27,31 @@ export function FeaturedRepos({ repos }: Props) {
   if (display.length === 0) return null
 
   return (
-    <section className="py-16" aria-label="Featured projects">
+    <section className="py-20" aria-label="Featured projects">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="font-mono text-xl font-bold text-[var(--text-primary)]">
-            Featured work
-          </h2>
+
+        {/* Section label + heading */}
+        <div className="flex items-end justify-between mb-10">
+          <div>
+            <span className="block font-mono text-xs text-coral tracking-widest uppercase mb-2">
+              // featured
+            </span>
+            <h2
+              className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Featured work
+            </h2>
+          </div>
           <Link
             href="/work"
-            className="inline-flex items-center gap-1 font-mono text-xs text-coral hover:underline cursor-pointer"
+            className="inline-flex items-center gap-1.5 font-mono text-xs text-coral hover:text-coral/80 transition-colors duration-150 cursor-pointer"
           >
             View all <ArrowRight size={12} />
           </Link>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {display.map(repo => (
             <RepoCard key={repo.id} repo={repo} featured />
           ))}

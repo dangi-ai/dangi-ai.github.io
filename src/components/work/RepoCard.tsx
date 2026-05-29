@@ -12,17 +12,22 @@ export function RepoCard({ repo, featured = false }: Props) {
   return (
     <article
       className={[
-        'group relative flex flex-col gap-3 rounded-2xl border border-[var(--border)]',
-        'bg-[var(--bg-card)] p-5 card-hover',
+        'card-glass group flex flex-col gap-3 p-5',
         featured ? 'sm:col-span-2' : '',
       ].join(' ')}
     >
-      {/* Coral top-edge accent on hover */}
-      <div className="absolute inset-x-0 top-0 h-[1px] rounded-t-2xl bg-gradient-to-r from-transparent via-coral/0 to-transparent group-hover:via-coral/60 transition-all duration-300" aria-hidden="true" />
+      {/* Gradient top border line — visible on hover */}
+      <div
+        className="absolute inset-x-0 top-0 h-[1px] rounded-t-2xl bg-gradient-to-r from-transparent via-coral/0 to-transparent group-hover:via-coral/70 transition-all duration-300"
+        aria-hidden="true"
+      />
 
       {/* Header */}
       <div className="flex items-start justify-between gap-2">
-        <h3 className="font-mono text-sm font-semibold text-[var(--text-primary)] truncate group-hover:text-coral transition-colors duration-200">
+        <h3
+          className="text-sm font-semibold text-[var(--text-primary)] truncate group-hover:text-coral transition-colors duration-200"
+          style={{ fontFamily: 'var(--font-mono)' }}
+        >
           {repo.name}
         </h3>
         <div className="flex items-center gap-2 flex-shrink-0">
@@ -50,17 +55,20 @@ export function RepoCard({ repo, featured = false }: Props) {
       </div>
 
       {/* Description */}
-      <p className="text-sm text-[var(--text-secondary)] line-clamp-2 flex-1 leading-relaxed">
+      <p
+        className="text-sm text-[var(--text-secondary)] line-clamp-2 flex-1 leading-relaxed"
+        style={{ fontFamily: 'var(--font-body)' }}
+      >
         {repo.description ?? 'No description'}
       </p>
 
-      {/* Topics */}
+      {/* Topics — mint glass pills */}
       {repo.topics.length > 0 && (
         <div className="flex flex-wrap gap-1.5">
           {repo.topics.slice(0, 4).map(t => (
             <span
               key={t}
-              className="font-mono text-[10px] px-2 py-0.5 rounded-md bg-mint/8 text-mint border border-mint/15"
+              className="font-mono text-[10px] px-2 py-0.5 rounded-md bg-mint/8 text-mint border border-mint/20"
             >
               {t}
             </span>
@@ -74,7 +82,7 @@ export function RepoCard({ repo, featured = false }: Props) {
         <div className="flex items-center gap-3 text-[var(--text-secondary)]">
           {repo.stargazers_count > 0 && (
             <span className="flex items-center gap-1 font-mono text-xs">
-              <Star size={11} className="text-coral/70" />
+              <Star size={11} className="text-coral" />
               {formatNumber(repo.stargazers_count)}
             </span>
           )}

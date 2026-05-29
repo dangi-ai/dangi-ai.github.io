@@ -42,36 +42,80 @@ const SOCIALS = [
 
 export default function ContactPage() {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <h1 className="font-mono text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-2">
-        Say hi
-      </h1>
-      <p className="text-[var(--text-secondary)] mb-12 leading-relaxed">
-        The best way to reach me is through any of these. I read everything.
-      </p>
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+
+      {/* Section label + Heading */}
+      <div className="mb-12">
+        <span className="block font-mono text-xs text-coral tracking-widest uppercase mb-3">
+          // contact
+        </span>
+        <h1
+          className="text-4xl sm:text-5xl font-bold text-[var(--text-primary)] mb-4 leading-tight"
+          style={{ fontFamily: 'var(--font-display)' }}
+        >
+          Say hi
+        </h1>
+        <p
+          className="text-[var(--text-secondary)] text-lg leading-relaxed"
+          style={{ fontFamily: 'var(--font-body)' }}
+        >
+          The best way to reach me is through any of these. I read everything.
+        </p>
+      </div>
 
       {/* Social link cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-16">
         {SOCIALS.map(social => (
           <SocialCard key={social.href} {...social} />
         ))}
       </div>
 
-      {/* Direct email */}
-      <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-6">
-        <div className="flex items-center gap-2 mb-3">
-          <Mail size={16} className="text-coral" />
-          <span className="font-mono text-sm font-semibold text-[var(--text-primary)]">Email</span>
-        </div>
-        <p className="text-sm text-[var(--text-secondary)] mb-4">
-          For professional enquiries, collaborations, or just a friendly hello.
-        </p>
-        <a
-          href="mailto:dangi.sushil5@gmail.com"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-coral text-white font-mono text-sm font-semibold hover:bg-coral/90 transition-colors duration-150 cursor-pointer"
+      {/* Direct email — gradient accent card */}
+      <div
+        className="relative p-px rounded-2xl overflow-hidden"
+        style={{
+          background: 'linear-gradient(135deg, rgba(255,77,109,0.5) 0%, rgba(124,58,237,0.3) 50%, rgba(255,77,109,0.2) 100%)',
+        }}
+      >
+        {/* Coral glow backdrop */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse 80% 60% at 0% 100%, rgba(255,77,109,0.12) 0%, transparent 70%)',
+          }}
+        />
+        <div
+          className="relative rounded-2xl p-7"
+          style={{
+            background: 'rgba(13,13,20,0.9)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+          }}
         >
-          Send an email
-        </a>
+          <div className="flex items-center gap-2.5 mb-3">
+            <Mail size={20} className="text-coral flex-shrink-0" />
+            <span
+              className="text-base font-semibold text-[var(--text-primary)]"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Email
+            </span>
+          </div>
+          <p
+            className="text-sm text-[var(--text-secondary)] mb-5 leading-relaxed"
+            style={{ fontFamily: 'var(--font-body)' }}
+          >
+            For professional enquiries, collaborations, or just a friendly hello.
+          </p>
+          <a
+            href="mailto:dangi.sushil5@gmail.com"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-coral text-white font-semibold text-sm hover:bg-coral/90 transition-colors duration-150 cursor-pointer glow-coral"
+            style={{ fontFamily: 'var(--font-body)' }}
+          >
+            Send an email
+          </a>
+        </div>
       </div>
     </div>
   )
