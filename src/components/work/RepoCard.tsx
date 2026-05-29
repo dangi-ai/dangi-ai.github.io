@@ -13,14 +13,16 @@ export function RepoCard({ repo, featured = false }: Props) {
     <article
       className={[
         'group relative flex flex-col gap-3 rounded-2xl border border-[var(--border)]',
-        'bg-[var(--bg-card)] p-5 transition-all duration-200',
-        'hover:border-coral/50 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-coral/5',
+        'bg-[var(--bg-card)] p-5 card-hover',
         featured ? 'sm:col-span-2' : '',
       ].join(' ')}
     >
+      {/* Coral top-edge accent on hover */}
+      <div className="absolute inset-x-0 top-0 h-[1px] rounded-t-2xl bg-gradient-to-r from-transparent via-coral/0 to-transparent group-hover:via-coral/60 transition-all duration-300" aria-hidden="true" />
+
       {/* Header */}
       <div className="flex items-start justify-between gap-2">
-        <h3 className="font-mono text-sm font-semibold text-[var(--text-primary)] truncate group-hover:text-coral transition-colors duration-150">
+        <h3 className="font-mono text-sm font-semibold text-[var(--text-primary)] truncate group-hover:text-coral transition-colors duration-200">
           {repo.name}
         </h3>
         <div className="flex items-center gap-2 flex-shrink-0">
@@ -30,9 +32,9 @@ export function RepoCard({ repo, featured = false }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Live site for ${repo.name}`}
-              className="text-[var(--text-secondary)] hover:text-mint transition-colors duration-150 cursor-pointer"
+              className="p-1 text-[var(--text-secondary)] hover:text-mint transition-colors duration-150 cursor-pointer"
             >
-              <Globe size={14} />
+              <Globe size={13} />
             </a>
           )}
           <a
@@ -40,15 +42,15 @@ export function RepoCard({ repo, featured = false }: Props) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`GitHub: ${repo.name}`}
-            className="text-[var(--text-secondary)] hover:text-coral transition-colors duration-150 cursor-pointer"
+            className="p-1 text-[var(--text-secondary)] hover:text-coral transition-colors duration-150 cursor-pointer"
           >
-            <ExternalLink size={14} />
+            <ExternalLink size={13} />
           </a>
         </div>
       </div>
 
       {/* Description */}
-      <p className="text-sm text-[var(--text-secondary)] line-clamp-2 flex-1">
+      <p className="text-sm text-[var(--text-secondary)] line-clamp-2 flex-1 leading-relaxed">
         {repo.description ?? 'No description'}
       </p>
 
@@ -58,7 +60,7 @@ export function RepoCard({ repo, featured = false }: Props) {
           {repo.topics.slice(0, 4).map(t => (
             <span
               key={t}
-              className="font-mono text-[10px] px-2 py-0.5 rounded-full bg-mint/10 text-mint border border-mint/20"
+              className="font-mono text-[10px] px-2 py-0.5 rounded-md bg-mint/8 text-mint border border-mint/15"
             >
               {t}
             </span>
@@ -67,12 +69,12 @@ export function RepoCard({ repo, featured = false }: Props) {
       )}
 
       {/* Footer stats */}
-      <div className="flex items-center justify-between pt-2 border-t border-[var(--border)]">
+      <div className="flex items-center justify-between pt-3 border-t border-[var(--border-subtle)]">
         <LanguageDot language={repo.language} />
         <div className="flex items-center gap-3 text-[var(--text-secondary)]">
           {repo.stargazers_count > 0 && (
             <span className="flex items-center gap-1 font-mono text-xs">
-              <Star size={11} />
+              <Star size={11} className="text-coral/70" />
               {formatNumber(repo.stargazers_count)}
             </span>
           )}
@@ -82,7 +84,9 @@ export function RepoCard({ repo, featured = false }: Props) {
               {formatNumber(repo.forks_count)}
             </span>
           )}
-          <span className="font-mono text-xs">{formatRelativeDate(repo.updated_at)}</span>
+          <span className="font-mono text-[10px] text-[var(--text-secondary)]">
+            {formatRelativeDate(repo.updated_at)}
+          </span>
         </div>
       </div>
     </article>

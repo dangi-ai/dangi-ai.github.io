@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { JetBrains_Mono, Inter } from 'next/font/google'
+import { JetBrains_Mono, IBM_Plex_Sans } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/layout/ThemeProvider'
 import { Header } from '@/components/layout/Header'
@@ -12,8 +12,8 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ['400', '500', '700'],
 })
 
-const inter = Inter({
-  variable: '--font-inter',
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: '--font-ibm',
   subsets: ['latin'],
   weight: ['400', '500', '600'],
 })
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${jetbrainsMono.variable} ${inter.variable} dark`}
+      className={`${jetbrainsMono.variable} ${ibmPlexSans.variable} dark`}
       suppressHydrationWarning
     >
       <body className="min-h-dvh flex flex-col antialiased">

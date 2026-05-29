@@ -10,11 +10,16 @@ const SOCIALS = [
 export function Footer() {
   return (
     <footer className="border-t border-[var(--border)] mt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="font-mono text-xs text-[var(--text-secondary)]">
-          © {new Date().getFullYear()} Sushil Dangi · I luv 2 code.
-        </p>
-        <div className="flex items-center gap-2">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col sm:flex-row items-center gap-3">
+          <span className="font-mono text-xs text-mint">&gt;_</span>
+          <p className="font-mono text-xs text-[var(--text-secondary)]">
+            © {new Date().getFullYear()} Sushil Dangi
+            <span className="mx-2 text-[var(--border)]">·</span>
+            I luv 2 code.
+          </p>
+        </div>
+        <div className="flex items-center gap-1">
           {SOCIALS.map(({ href, label, Icon }) => (
             <a
               key={href}
@@ -22,9 +27,9 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="p-2 rounded-lg text-[var(--text-secondary)] hover:text-coral transition-colors duration-150 cursor-pointer"
+              className="p-2 rounded-lg text-[var(--text-secondary)] hover:text-coral hover:bg-[var(--muted)] transition-colors duration-150 cursor-pointer"
             >
-              <Icon size={16} />
+              <Icon size={15} />
             </a>
           ))}
         </div>
