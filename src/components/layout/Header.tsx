@@ -70,7 +70,7 @@ export function Header() {
                     'relative px-4 py-1.5 rounded-lg font-mono text-sm transition-colors duration-150',
                     active
                       ? 'text-coral'
-                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-white/5',
+                      : 'text-white/75 hover:text-white hover:bg-white/8',
                   ].join(' ')}
                 >
                   {label}
@@ -95,7 +95,7 @@ export function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="hidden lg:flex p-2 rounded-lg text-[var(--text-secondary)] hover:text-coral hover:bg-white/5 transition-colors duration-150 cursor-pointer"
+                className="hidden lg:flex p-2 rounded-lg text-white/60 hover:text-coral hover:bg-white/8 transition-colors duration-150 cursor-pointer"
               >
                 <Icon size={15} />
               </a>
@@ -118,7 +118,7 @@ export function Header() {
               onClick={() => setMobileOpen(o => !o)}
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileOpen}
-              className="md:hidden p-2 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-white/5 transition-colors duration-150 cursor-pointer"
+              className="md:hidden p-2 rounded-lg text-white/75 hover:text-white hover:bg-white/8 transition-colors duration-150 cursor-pointer"
             >
               {mobileOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
