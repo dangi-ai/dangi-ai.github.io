@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# luv2code.in
 
-## Getting Started
+Personal developer portfolio for [Sushil Dangi](https://luv2code.in) — built with Next.js 16 static export, deployed to GitHub Pages.
 
-First, run the development server:
+## Running locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev            # dev server at http://localhost:3000
+npm run fetch-repos    # re-fetch GitHub repos into src/data/repos.json
+npm run build          # fetch repos then static export → out/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Featuring specific repos
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Edit `src/data/featured-repos.ts`:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```typescript
+export const FEATURED_REPOS: string[] = [
+  'my-repo-name',
+  'another-repo',
+]
+```
 
-## Learn More
+Use the exact GitHub repository name (not `full_name`). Featured repos appear first on the Home page and Work page. If the array is empty, the site auto-selects the top-starred repos.
 
-To learn more about Next.js, take a look at the following resources:
+## How CI repo-fetch works
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The GitHub Actions workflow (`.github/workflows/deploy.yml`) runs `scripts/fetch-repos.mjs` before `next build`. The script calls the GitHub API with `GITHUB_TOKEN` (automatically available in Actions — no manual secrets setup needed). It writes the result to `src/data/repos.json`, which Next.js bakes into the static export. Visitors never hit the GitHub API.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The workflow runs on every push to `main` **and** on a daily cron (`0 2 * * *` UTC) so repo data stays fresh without requiring a code push.
 
-## Deploy on Vercel
+## One-time GitHub Pages setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Go to **Settings → Pages** in the repository.
+2. Set **Source** to **GitHub Actions**.
+3. Under **Custom domain**, enter `luv2code.in`.
+4. Check **Enforce HTTPS**.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**DNS** — point the apex domain to GitHub's IPs:
+```
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
+And a `CNAME` for `www` pointing to `<username>.github.io`.

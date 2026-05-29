@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Luv2code logo">
+
+<defs>
+  <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#1B2230"/>
+    <stop offset="1" stop-color="#10141C"/>
+  </linearGradient>
+  <linearGradient id="g1_sheen" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ffffff" stop-opacity="0.10"/>
+    <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+  </linearGradient>
+</defs>
+<rect x="0" y="0" width="120" height="120" rx="30.6" fill="url(#g1)"/>
+<rect x="0" y="0" width="120" height="120" rx="30.6" fill="url(#g1_sheen)"/>
+<rect x="0.8" y="0.8" width="118.4" height="118.4" rx="29.8" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1.6"/>
+<path d="M47.70 42.90 L13.50 60.00 L47.70 77.10" fill="none" stroke="#3DDC97" stroke-width="8.639999999999999" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M72.30 42.90 L106.50 60.00 L72.30 77.10" fill="none" stroke="#3DDC97" stroke-width="8.639999999999999" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(42.90,45.09) scale(0.3420)"><path d="M50 89 C 16 62 2 42 2 25 C 2 10 13 1 26 1 C 37 1 45 8 50 18 C 55 8 63 1 74 1 C 87 1 98 10 98 25 C 98 42 84 62 50 89 Z" fill="#FF4D6D" /></g>
+</svg>
