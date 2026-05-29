@@ -61,15 +61,15 @@
 }
 
 .dark {
-  /* True OLED dark */
-  --bg:             #06060A;
-  --bg-card:        #0D0D14;
-  --bg-elevated:    #111118;
+  /* Deep navy dark */
+  --bg:             #080C18;
+  --bg-card:        #0D1020;
+  --bg-elevated:    #111528;
   --text-primary:   #ECEEF5;
   --text-secondary: #7C8394;
-  --border:         #1A1A2E;
-  --border-subtle:  #12121C;
-  --muted:          #0E0E16;
+  --border:         #1A1E2E;
+  --border-subtle:  #12162A;
+  --muted:          #0E1222;
 }
 
 /* ─── Base ─── */
@@ -175,6 +175,11 @@ body {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ─── Hero radial glow ─── */
+.hero-glow {
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255,77,109,0.20) 0%, rgba(124,58,237,0.08) 50%, transparent 70%);
 }
 
 /* ─── Dark mode scrollbar ─── */
