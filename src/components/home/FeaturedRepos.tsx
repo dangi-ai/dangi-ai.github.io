@@ -1,61 +1,83 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
-import { RepoCard } from '@/components/work/RepoCard'
 import type { Repo } from '@/lib/types'
-import { FEATURED_REPOS } from '@/data/featured-repos'
+import { FEATURED_REPOS } from '@/config/featured'
+import { getLanguageColor } from '@/lib/languageColors'
+import { relativeTime } from '@/lib/relativeTime'
+import { Star, GitFork } from 'lucide-react'
 
-interface Props {
+interface FeaturedReposProps {
   repos: Repo[]
 }
 
-export function FeaturedRepos({ repos }: Props) {
-  const featuredSet = new Set(FEATURED_REPOS)
-
-  let display: Repo[]
-  if (featuredSet.size > 0) {
-    display = repos.filter(r => featuredSet.has(r.name)).slice(0, 4)
-  } else {
-    display = [...repos]
-      .sort(
-        (a, b) =>
-          b.stargazers_count - a.stargazers_count ||
-          new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
-      )
-      .slice(0, 4)
+function pickFeatured(repos: Repo[]): Repo[] {
+  if (FEATURED_REPOS.length > 0) {
+    const pinned = FEATURED_REPOS
+      .map(name => repos.find(r => r.name === name))
+      .filter(Boolean) as Repo[]
+    if (pinned.length > 0) return pinned.slice(0, 3)
   }
+  return [...repos].sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 3)
+}
 
-  if (display.length === 0) return null
+export function FeaturedRepos({ repos }: FeaturedReposProps) {
+  const featured = pickFeatured(repos)
 
   return (
-    <section className="py-20" aria-label="Featured projects">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="max-w-5xl mx-auto px-8 py-12">
+      <div className="flex items-baseline justify-between mb-6">
+        <h2 className="font-display text-xl font-bold text-ink">Featured work</h2>
+        <Link href="/work" className="text-sm text-accent font-medium hover:text-accent-dark transition-colors">
+          View all repos →
+        </Link>
+      </div>
 
-        {/* Section label + heading */}
-        <div className="flex items-end justify-between mb-10">
-          <div>
-            <span className="block font-mono text-xs text-coral tracking-widest uppercase mb-2">
-              // featured
-            </span>
-            <h2
-              className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              Featured work
-            </h2>
-          </div>
-          <Link
-            href="/work"
-            className="inline-flex items-center gap-1.5 font-mono text-xs text-coral hover:text-coral/80 transition-colors duration-150 cursor-pointer"
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {featured.map(repo => (
+          <a
+            key={repo.id}
+            href={repo.html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white border border-line rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3"
           >
-            View all <ArrowRight size={12} />
-          </Link>
-        </div>
+            <div className="flex items-start justify-between gap-2">
+              <span className="font-display font-bold text-sm text-accent leading-snug">{repo.name}</span>
+              <span className="text-muted text-xs flex-shrink-0 mt-0.5" aria-hidden>↗</span>
+            </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {display.map(repo => (
-            <RepoCard key={repo.id} repo={repo} featured />
-          ))}
-        </div>
+            {repo.description && (
+              <p className="text-muted text-xs leading-relaxed flex-1">{repo.description}</p>
+            )}
+
+            <div className="flex flex-wrap gap-1.5">
+              {repo.language && (
+                <span className="flex items-center gap-1 bg-surface font-mono text-[10px] px-2 py-0.5 rounded text-ink">
+                  <span
+                    className="w-2 h-2 rounded-full flex-shrink-0"
+                    style={{ background: getLanguageColor(repo.language) }}
+                    aria-hidden
+                  />
+                  {repo.language}
+                </span>
+              )}
+              {repo.topics.slice(0, 2).map(t => (
+                <span key={t} className="font-mono text-[10px] px-2 py-0.5 rounded bg-surface text-muted">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-3 font-mono text-[10px] text-muted">
+              <span className="flex items-center gap-1">
+                <Star size={10} aria-hidden /> {repo.stargazers_count}
+              </span>
+              <span className="flex items-center gap-1">
+                <GitFork size={10} aria-hidden /> {repo.forks_count}
+              </span>
+              <span className="ml-auto">{relativeTime(repo.updated_at)}</span>
+            </div>
+          </a>
+        ))}
       </div>
     </section>
   )
