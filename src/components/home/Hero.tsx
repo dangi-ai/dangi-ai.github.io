@@ -52,7 +52,7 @@ export function Hero() {
         </p>
 
         <h1
-          className="font-display text-5xl font-extrabold text-ink leading-[1.05] mb-5 animate-fade-up"
+          className="font-display text-5xl font-bold text-ink leading-[1.05] mb-5 animate-fade-up"
           style={{ animationDelay: '80ms' }}
         >
           Sushil Dangi
@@ -111,6 +111,7 @@ export function Hero() {
       {/* Photo column */}
       <div className="flex-shrink-0 animate-fade-up" style={{ animationDelay: '160ms' }}>
         <div
+          role="img"
           className="w-40 h-40 rounded-full bg-surface border-4 border-line flex items-center justify-center"
           aria-label="Photo of Sushil Dangi — placeholder"
         >

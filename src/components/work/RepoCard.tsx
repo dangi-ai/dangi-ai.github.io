@@ -10,22 +10,25 @@ interface RepoCardProps {
 
 export function RepoCard({ repo, featured = false }: RepoCardProps) {
   return (
-    <a
-      href={repo.html_url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`bg-white border border-line rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3 ${
+    <div
+      role="article"
+      onClick={() => window.open(repo.html_url, '_blank', 'noopener,noreferrer')}
+      className={`bg-white border border-line rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3 cursor-pointer ${
         featured ? 'border-t-2 border-t-accent' : ''
       }`}
     >
       <div className="flex items-start justify-between gap-2">
-        <span
-          className={`font-display font-bold text-sm leading-snug ${
+        <a
+          href={repo.html_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={e => e.stopPropagation()}
+          className={`font-display font-bold text-sm leading-snug hover:underline ${
             featured ? 'text-accent' : 'text-ink'
           }`}
         >
           {repo.name}
-        </span>
+        </a>
         <ExternalLink size={12} className="text-muted flex-shrink-0 mt-0.5" aria-hidden />
       </div>
 
@@ -74,6 +77,6 @@ export function RepoCard({ repo, featured = false }: RepoCardProps) {
           <span className="ml-auto">{relativeTime(repo.updated_at)}</span>
         )}
       </div>
-    </a>
+    </div>
   )
 }

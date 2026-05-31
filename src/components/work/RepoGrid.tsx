@@ -26,7 +26,7 @@ export function RepoGrid({ repos }: RepoGridProps) {
     [repos, query, language, sort]
   )
 
-  const featuredSet = new Set(FEATURED_REPOS)
+  const featuredSet = useMemo(() => new Set(FEATURED_REPOS), [])
 
   return (
     <div>

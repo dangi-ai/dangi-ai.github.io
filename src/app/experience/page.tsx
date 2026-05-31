@@ -15,7 +15,7 @@ export default function ExperiencePage() {
       <p className="font-mono text-[10px] text-accent uppercase tracking-[0.2em] mb-4">
         Experience
       </p>
-      <h1 className="font-display text-4xl font-extrabold text-ink leading-tight mb-12">
+      <h1 className="font-display text-4xl font-bold text-ink leading-tight mb-12">
         Career timeline
       </h1>
 

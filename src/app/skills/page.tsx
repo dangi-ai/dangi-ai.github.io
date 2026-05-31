@@ -13,7 +13,7 @@ export default function SkillsPage() {
   return (
     <div className="max-w-5xl mx-auto px-8 py-16">
       <p className="font-mono text-[10px] text-accent uppercase tracking-[0.2em] mb-4">Skills</p>
-      <h1 className="font-display text-4xl font-extrabold text-ink leading-tight mb-12">
+      <h1 className="font-display text-4xl font-bold text-ink leading-tight mb-12">
         Tech I work with
       </h1>
 

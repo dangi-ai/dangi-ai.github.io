@@ -76,6 +76,7 @@ export function Nav() {
           className="md:hidden text-ink p-1"
           onClick={() => setOpen(o => !o)}
           aria-label={open ? 'Close menu' : 'Open navigation menu'}
+          aria-expanded={open}
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
