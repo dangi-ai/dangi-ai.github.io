@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Hero } from '@/components/home/Hero'
+import { StatsStrip } from '@/components/home/StatsStrip'
 import { TechStrip } from '@/components/home/TechStrip'
 import { FeaturedRepos } from '@/components/home/FeaturedRepos'
 import { JsonLd } from '@/components/JsonLd'
@@ -9,7 +10,7 @@ import type { Repo } from '@/lib/types'
 export const metadata: Metadata = {
   title: 'Luv2code — Sushil Dangi',
   description:
-    'Engineering Manager & Backend Engineer. Java · Spring Boot · AWS. I luv 2 code.',
+    'Senior Java / Spring Boot Lead · 10+ years building distributed systems. I luv 2 code. I luv 2 share what I learn.',
   openGraph: { url: 'https://luv2code.in/' },
 }
 
@@ -18,6 +19,7 @@ export default function HomePage() {
     <>
       <JsonLd />
       <Hero />
+      <StatsStrip />
       <TechStrip />
       <FeaturedRepos repos={repos as Repo[]} />
     </>

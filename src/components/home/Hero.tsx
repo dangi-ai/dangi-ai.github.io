@@ -41,56 +41,67 @@ const SOCIALS = [
 
 export function Hero() {
   return (
-    <section className="max-w-5xl mx-auto px-8 pt-20 pb-16 flex items-center justify-between gap-12 flex-wrap md:flex-nowrap">
-      {/* Text column */}
-      <div className="flex-1 min-w-0">
+    <section className="border-b border-line">
+      <div className="max-w-5xl mx-auto px-8 pt-24 pb-16 flex flex-col items-center text-center">
+
         <p
-          className="font-mono text-[10px] text-accent uppercase tracking-[0.2em] mb-4 animate-fade-up"
+          className="font-mono text-[10px] text-accent uppercase tracking-[0.2em] mb-5 animate-fade-up"
           style={{ animationDelay: '0ms' }}
         >
           Senior Java / Spring Boot Lead · 10+ Years
         </p>
 
         <h1
-          className="font-display text-5xl font-bold text-ink leading-[1.05] mb-5 animate-fade-up"
-          style={{ animationDelay: '80ms' }}
+          className="font-display text-5xl md:text-6xl font-bold text-ink leading-[1.05] mb-5 animate-fade-up"
+          style={{ animationDelay: '60ms' }}
         >
-          Sushil Dangi
+          Hi, I&apos;m Sushil Dangi
         </h1>
 
         <p
-          className="text-muted text-base leading-relaxed max-w-md mb-3 animate-fade-up"
-          style={{ animationDelay: '160ms' }}
+          className="text-muted text-lg leading-relaxed max-w-xl mb-3 animate-fade-up"
+          style={{ animationDelay: '120ms' }}
         >
           I build scalable backend systems and lead engineering teams to ship production code daily.
         </p>
         <p
           className="text-ink font-medium text-base mb-8 animate-fade-up"
-          style={{ animationDelay: '200ms' }}
+          style={{ animationDelay: '160ms' }}
         >
           I luv 2 code. I luv 2 share what I learn.
         </p>
 
         <div
-          className="flex gap-3 flex-wrap mb-8 animate-fade-up"
-          style={{ animationDelay: '240ms' }}
+          className="flex gap-3 flex-wrap justify-center mb-8 animate-fade-up"
+          style={{ animationDelay: '200ms' }}
         >
           <Link
             href="/work"
-            className="bg-accent text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-accent-dark transition-colors"
+            className="bg-accent text-white text-sm font-semibold px-6 py-3 rounded-md hover:bg-accent-dark transition-colors"
           >
             View my work →
           </Link>
           <Link
             href="/contact"
-            className="border-[1.5px] border-ink text-ink text-sm font-medium px-5 py-2.5 rounded-md hover:bg-surface transition-colors"
+            className="border-[1.5px] border-ink text-ink text-sm font-medium px-6 py-3 rounded-md hover:bg-surface transition-colors"
           >
             Get in touch
           </Link>
         </div>
 
         <div
-          className="flex items-center gap-4 animate-fade-up"
+          className="animate-fade-up"
+          style={{ animationDelay: '240ms' }}
+        >
+          <img
+            src="/headshot.png"
+            alt="Sushil Dangi"
+            className="w-28 h-28 rounded-full object-cover border-4 border-line shadow-sm"
+          />
+        </div>
+
+        <div
+          className="flex items-center gap-5 mt-6 animate-fade-up"
           style={{ animationDelay: '280ms' }}
         >
           {SOCIALS.map(({ href, icon: Icon, label }) => (
@@ -106,15 +117,7 @@ export function Hero() {
             </a>
           ))}
         </div>
-      </div>
 
-      {/* Photo column */}
-      <div className="flex-shrink-0 animate-fade-up" style={{ animationDelay: '160ms' }}>
-        <img
-          src="/headshot.png"
-          alt="Sushil Dangi"
-          className="w-40 h-40 rounded-full object-cover border-4 border-line"
-        />
       </div>
     </section>
   )
