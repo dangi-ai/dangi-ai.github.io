@@ -1,3 +1,5 @@
+'use client'
+
 import type { Skill } from '@/lib/types'
 
 interface SkillCardProps {
