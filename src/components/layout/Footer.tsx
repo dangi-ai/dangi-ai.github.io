@@ -1,11 +1,10 @@
-import Link from 'next/link'
-import { Github, Linkedin, Twitter, Instagram } from 'lucide-react'
+import { GitHubIcon, LinkedInIcon, XIcon, InstagramIcon } from '@/components/ui/SocialIcons'
 
 const SOCIALS = [
-  { href: 'https://github.com/dangi-ai',                    icon: Github,    label: 'GitHub' },
-  { href: 'https://www.linkedin.com/in/sushil-dangi/',      icon: Linkedin,  label: 'LinkedIn' },
-  { href: 'https://x.com/s_dangi98',                        icon: Twitter,   label: 'X / Twitter' },
-  { href: 'https://www.instagram.com/smiley_s_d/',          icon: Instagram, label: 'Instagram' },
+  { href: 'https://github.com/dangi-ai',                    icon: GitHubIcon,   label: 'GitHub' },
+  { href: 'https://www.linkedin.com/in/sushil-dangi/',      icon: LinkedInIcon, label: 'LinkedIn' },
+  { href: 'https://x.com/s_dangi98',                        icon: XIcon,        label: 'X / Twitter' },
+  { href: 'https://www.instagram.com/smiley_s_d/',          icon: InstagramIcon, label: 'Instagram' },
 ]
 
 export function Footer() {

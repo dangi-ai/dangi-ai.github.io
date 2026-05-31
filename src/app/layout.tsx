@@ -7,7 +7,7 @@ import { Footer } from '@/components/layout/Footer'
 const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk',
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600', '700'],
 })
 
 const dmSans = DM_Sans({
