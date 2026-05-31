@@ -48,7 +48,7 @@ export function Hero() {
           className="font-mono text-[10px] text-accent uppercase tracking-[0.2em] mb-4 animate-fade-up"
           style={{ animationDelay: '0ms' }}
         >
-          Engineering Manager · Backend Engineer
+          Senior Java / Spring Boot Lead · 10+ Years
         </p>
 
         <h1

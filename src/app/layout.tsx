@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://luv2code.in'),
   title: { default: 'Luv2code — Sushil Dangi', template: '%s | Luv2code' },
   description:
-    'Engineering Manager & Backend Engineer. Java · Spring Boot · AWS. I luv 2 code. I luv 2 share what I learn.',
+    'Senior Java / Spring Boot Lead · 10+ years building distributed systems & leading engineering teams. I luv 2 code. I luv 2 share what I learn.',
   openGraph: {
     type: 'website',
     url: 'https://luv2code.in',

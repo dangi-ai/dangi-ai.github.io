@@ -61,12 +61,12 @@ export default function ContactPage() {
 
       <div className="text-center max-w-lg">
         <a
-          href="mailto:dangi.sushil5@gmail.com"
+          href="mailto:sushil.dangi@luv2code.in"
           className="inline-block bg-accent text-white font-semibold text-sm px-6 py-3 rounded-md hover:bg-accent-dark transition-colors"
         >
           Say hi via email →
         </a>
-        <p className="font-mono text-xs text-muted mt-3">dangi.sushil5@gmail.com</p>
+        <p className="font-mono text-xs text-muted mt-3">sushil.dangi@luv2code.in</p>
       </div>
     </div>
   )

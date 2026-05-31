@@ -1,41 +1,84 @@
 import type { ExperienceEntry } from '@/lib/types'
 
-// TODO: Replace placeholder entries with your real experience
 export const experience: ExperienceEntry[] = [
   {
-    role: 'Engineering Manager',
-    company: 'Your Company',
-    period: '2022–Present',
-    location: 'Bangalore, India',
+    role: 'Senior Team Lead',
+    company: 'Technoboost Services Private Limited',
+    period: 'Apr 2022 – Present',
+    location: 'Bangalore, Karnataka, India',
     current: true,
     bullets: [
-      'Led a team of engineers delivering Java microservices in production',
-      'Owned backend architecture decisions across multiple product verticals',
-      'Drove performance improvements — query optimisation, connection pool tuning',
+      'Lead a team of 15 developers building scalable, distributed backend microservices in Java and Spring Boot, including a large-scale platform for a major jewelry client processing ~100,000 transactions per day.',
+      'Architected a 5-microservice system with RESTful APIs and optimised PostgreSQL interactions, sustaining 98.2% uptime while reducing latency and improving overall application performance.',
+      'Established engineering best practices — CI/CD pipelines, unit testing, and structured code reviews — to ensure high-quality, reliable deliverables across the team.',
+      'Partner with cross-functional teams to translate complex business requirements into technical specifications and roadmap planning.',
     ],
-    tech: ['Java', 'Spring Boot', 'PostgreSQL', 'AWS', 'GitHub Actions'],
+    tech: ['Java', 'Spring Boot', 'PostgreSQL', 'AWS', 'Python', 'Microservices'],
   },
   {
-    role: 'Senior Backend Engineer',
-    company: 'Previous Company',
-    period: '2019–2022',
-    location: 'Bangalore, India',
+    role: 'Senior Java Developer',
+    company: 'TrueVisual',
+    period: 'Feb 2018 – Mar 2022',
+    location: 'Bengaluru, India',
     bullets: [
-      'Built and maintained high-throughput REST APIs serving millions of requests',
-      'Introduced Flyway migrations and standardised DB versioning across the team',
-      'Mentored junior engineers on Java best practices and testing strategies',
+      'Spearheaded the development of core web applications using Java, Spring MVC, and Thymeleaf.',
+      'Designed and implemented RESTful Web Services to support third-party integrations and internal data flow.',
+      'Optimised Hibernate data layers to handle high-volume transactions efficiently.',
+      'Migrated legacy codebases to modern Spring Boot architectures, improving maintainability and deployment speed.',
     ],
-    tech: ['Java', 'Spring Boot', 'MySQL', 'Docker'],
+    tech: ['Java', 'Spring Boot', 'Spring MVC', 'Hibernate', 'MySQL', 'PostgreSQL', 'AWS'],
   },
   {
-    role: 'Backend Engineer',
-    company: 'Early Role',
-    period: '2017–2019',
-    location: 'Bangalore, India',
+    role: 'Junior Java Developer',
+    company: 'CinivuComicsNFT',
+    period: 'Jul 2017 – Jan 2018',
+    location: 'Bengaluru, India',
     bullets: [
-      'Developed backend services for consumer-facing products',
-      'Gained hands-on experience with Java, Spring MVC, and relational databases',
+      'Developed backend components for web applications using Spring Boot, ensuring seamless data flow and high availability.',
+      'Designed and documented RESTful Web Services to support frontend integration and mobile app connectivity.',
+      'Participated in the full software development lifecycle, including requirements gathering, coding, and unit testing.',
+      'Collaborated with senior developers to troubleshoot issues and optimise code performance.',
     ],
-    tech: ['Java', 'Spring MVC', 'MySQL'],
+    tech: ['Spring Boot', 'Hibernate', 'REST APIs'],
+  },
+  {
+    role: 'Java Developer Intern',
+    company: 'CinivuComicsNFT',
+    period: 'Jan 2017 – Jun 2017',
+    location: 'Bengaluru, India',
+    bullets: [
+      'Gained hands-on experience in Core Java and backend development fundamentals.',
+      'Assisted in building and testing REST APIs, learning industry standards for API design.',
+      'Worked with version control (Git) and participated in daily stand-ups to track project progress.',
+      'Contributed to bug fixing and code refactoring tasks to improve application stability.',
+    ],
+    tech: ['Core Java', 'REST APIs', 'Git'],
+  },
+  {
+    role: 'Assistant Trainer',
+    company: 'RCPL (Ritusha Consultants Pvt. Ltd.)',
+    period: 'May 2016 – Jul 2016',
+    location: 'Kolkata, West Bengal, India',
+    bullets: [
+      'Mentored students and professionals on Core Java and J2EE concepts, translating complex technical topics into approachable lessons.',
+      'Conducted practical lab sessions focused on Maven build tools and Apache Tomcat server configuration.',
+      'Assisted in evaluating student projects and code assignments to enforce best coding practices.',
+    ],
+    tech: ['Core Java', 'J2EE', 'Maven', 'Tomcat'],
+  },
+]
+
+export const education = [
+  {
+    degree: 'Master of Computer Applications (MCA)',
+    institution: 'National Institute of Technology, Raipur',
+    period: '2014 – 2017',
+    notes: 'Specialised in Object-Oriented Programming and Software Engineering, with a focus on backend system architecture.',
+  },
+  {
+    degree: 'Bachelor of Computer Applications (BCA)',
+    institution: 'Sikkim Manipal University',
+    period: '2010 – 2013',
+    notes: '',
   },
 ]

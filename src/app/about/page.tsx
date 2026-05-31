@@ -29,17 +29,19 @@ export default function AboutPage() {
 
       <div className="max-w-2xl space-y-5 mb-14">
         <p className="text-muted leading-relaxed">
-          I&apos;m an Engineering Manager and backend engineer with a deep focus on Java and
-          Spring Boot. I care about clean architecture, predictable systems, and helping teams
-          ship production code with confidence.
+          Senior Java Backend Lead with 10+ years of experience engineering scalable, distributed
+          systems. Currently Senior Team Lead at Technoboost Services, leading a team of 15
+          developers building microservices with Java, Spring Boot, and Hibernate — with a focus
+          on clean architecture, performance, and mentoring.
+        </p>
+        <p className="text-muted leading-relaxed">
+          I&apos;ve worked across the full backend spectrum: high-throughput REST APIs, 5-service
+          microservice architectures processing ~100,000 transactions per day, PostgreSQL
+          optimisation, CI/CD pipelines, and cloud deployments on AWS.
         </p>
         <p className="text-muted leading-relaxed">
           Beyond the code, I believe strongly in sharing what I learn — through open-source,
           writing, and building in public. That&apos;s the whole point of Luv2code.
-        </p>
-        <p className="text-muted leading-relaxed">
-          I&apos;ve spent years working on high-throughput backend systems, leading engineering
-          teams, and obsessing over database performance and deployment automation.
         </p>
       </div>
 
