@@ -110,13 +110,11 @@ export function Hero() {
 
       {/* Photo column */}
       <div className="flex-shrink-0 animate-fade-up" style={{ animationDelay: '160ms' }}>
-        <div
-          role="img"
-          className="w-40 h-40 rounded-full bg-surface border-4 border-line flex items-center justify-center"
-          aria-label="Photo of Sushil Dangi — placeholder"
-        >
-          <span className="font-display font-bold text-3xl text-muted select-none">SD</span>
-        </div>
+        <img
+          src="/headshot.png"
+          alt="Sushil Dangi"
+          className="w-40 h-40 rounded-full object-cover border-4 border-line"
+        />
       </div>
     </section>
   )
