@@ -1,171 +1,79 @@
 import type { Metadata } from 'next'
-import { Code2, Server, Database, Cloud } from 'lucide-react'
+import { skills } from '@/data/skills'
+import type { Skill } from '@/lib/types'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Engineering Manager & Backend Engineer — Java, Spring Boot, PostgreSQL, and cloud integrations.',
-  openGraph: { url: 'https://luv2code.in/about/' },
+  description:
+    'Engineering Manager & Backend Engineer — Java, Spring Boot, PostgreSQL, AWS. My story and what I believe about building software.',
+  openGraph: { url: 'https://luv2code.in/about' },
 }
 
-const SKILLS = [
-  {
-    group: 'Languages',
-    Icon: Code2,
-    items: ['Java 21', 'TypeScript', 'SQL', 'Shell / Bash'],
-  },
-  {
-    group: 'Frameworks',
-    Icon: Server,
-    items: ['Spring Boot', 'Spring Security', 'Hibernate / JPA', 'Next.js'],
-  },
-  {
-    group: 'Data',
-    Icon: Database,
-    items: ['PostgreSQL', 'Flyway', 'HikariCP', 'Redis'],
-  },
-  {
-    group: 'DevOps & Cloud',
-    Icon: Cloud,
-    items: ['GitHub Actions CI/CD', 'AWS S3 / RDS / SES', 'Docker', 'Secrets Manager'],
-  },
-]
+const CATEGORY_LABELS: Record<Skill['category'], string> = {
+  language:  'Languages',
+  framework: 'Frameworks & Libraries',
+  data:      'Data',
+  devops:    'DevOps & Cloud',
+  tool:      'Tools',
+}
+
+const CATEGORIES: Skill['category'][] = ['language', 'framework', 'data', 'devops', 'tool']
 
 export default function AboutPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div className="max-w-5xl mx-auto px-8 py-16">
+      <p className="font-mono text-[10px] text-accent uppercase tracking-[0.2em] mb-4">About</p>
+      <h1 className="font-display text-4xl font-extrabold text-ink leading-tight mb-10">
+        I luv 2 code.<br />I luv 2 share.
+      </h1>
 
-      {/* Section label + Heading */}
-      <div className="mb-12">
-        <span className="block font-mono text-xs text-coral tracking-widest uppercase mb-3">
-          // about
-        </span>
-        <h1
-          className="text-4xl sm:text-5xl font-bold text-[var(--text-primary)] mb-4 leading-tight"
-          style={{ fontFamily: 'var(--font-display)' }}
-        >
-          About me
-        </h1>
-        <p
-          className="text-coral text-lg font-semibold"
-          style={{ fontFamily: 'var(--font-display)' }}
-        >
-          Engineering Manager &amp; Backend Engineer
+      <div className="max-w-2xl space-y-5 mb-14">
+        <p className="text-muted leading-relaxed">
+          I&apos;m an Engineering Manager and backend engineer with a deep focus on Java and
+          Spring Boot. I care about clean architecture, predictable systems, and helping teams
+          ship production code with confidence.
+        </p>
+        <p className="text-muted leading-relaxed">
+          Beyond the code, I believe strongly in sharing what I learn — through open-source,
+          writing, and building in public. That&apos;s the whole point of Luv2code.
+        </p>
+        <p className="text-muted leading-relaxed">
+          I&apos;ve spent years working on high-throughput backend systems, leading engineering
+          teams, and obsessing over database performance and deployment automation.
         </p>
       </div>
 
-      {/* Story */}
-      <section className="mb-20 space-y-5" aria-label="My story">
-        <p
-          className="text-[var(--text-secondary)] leading-relaxed text-base sm:text-lg"
-          style={{ fontFamily: 'var(--font-body)' }}
-        >
-          I am Sushil Dangi — an Engineering Manager and backend engineer who has spent years deep
-          in Java and Spring Boot, solving the kinds of problems that only show up in production at
-          scale. My work lives in the unsexy layers: connection pool tuning, migration strategies,
-          IAM roles that actually work, CI pipelines that catch failures before your users do.
-        </p>
-        <p
-          className="text-[var(--text-secondary)] leading-relaxed text-base sm:text-lg"
-          style={{ fontFamily: 'var(--font-body)' }}
-        >
-          My engineering philosophy is simple:{' '}
-          <span className="text-[var(--text-primary)] font-semibold">
-            ship working software, then improve it.
-          </span>{' '}
-          I am sceptical of architecture astronauts and allergic to premature abstraction. The best
-          systems I have worked on were boring — plain services, clear boundaries, great
-          observability.
-        </p>
-        <p
-          className="text-[var(--text-secondary)] leading-relaxed text-base sm:text-lg"
-          style={{ fontFamily: 'var(--font-body)' }}
-        >
-          I specialise in backend architecture, performance optimisation, database design, deployment
-          automation, and cloud integrations. I also manage engineers — which means I spend a
-          meaningful portion of my time helping other developers level up.
-        </p>
-      </section>
+      <div className="border-t border-line pt-10">
+        <h2 className="font-display text-xl font-bold text-ink mb-8">Skills &amp; Technologies</h2>
 
-      {/* Skills bento grid */}
-      <section aria-label="Skills and technology">
-        <div className="mb-8">
-          <span className="block font-mono text-xs text-coral tracking-widest uppercase mb-3">
-            // skills
-          </span>
-          <h2
-            className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            What I work with
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {SKILLS.map(({ group, Icon, items }) => (
-            <div
-              key={group}
-              className="card-glass group p-6 hover:border-mint/40 transition-colors duration-200"
-            >
-              <div className="flex items-center gap-2.5 mb-5">
-                <Icon size={18} className="text-mint flex-shrink-0" />
-                <span className="font-mono text-xs text-mint uppercase tracking-widest">{group}</span>
+        <div className="space-y-8">
+          {CATEGORIES.map(cat => {
+            const group = skills.filter(s => s.category === cat)
+            if (group.length === 0) return null
+            return (
+              <div key={cat}>
+                <p className="font-mono text-[10px] text-muted uppercase tracking-[0.15em] mb-3">
+                  {CATEGORY_LABELS[cat]}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {group.map(skill => (
+                    <span
+                      key={skill.name}
+                      className={
+                        skill.primary
+                          ? 'bg-accent-light text-accent-dark font-mono text-xs px-3 py-1 rounded'
+                          : 'bg-surface text-muted font-mono text-xs px-3 py-1 rounded'
+                      }
+                    >
+                      {skill.name}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <ul className="space-y-2.5">
-                {items.map(item => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-2.5 text-sm text-[var(--text-primary)]"
-                    style={{ fontFamily: 'var(--font-body)' }}
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-coral flex-shrink-0" aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+            )
+          })}
         </div>
-      </section>
-
-      {/* Knowledge sharing — gradient border card */}
-      <section
-        className="mt-20 relative p-px rounded-2xl"
-        style={{
-          background: 'linear-gradient(135deg, rgba(61,220,151,0.4) 0%, rgba(124,58,237,0.2) 50%, rgba(255,77,109,0.4) 100%)',
-        }}
-        aria-label="On sharing knowledge"
-      >
-        <div
-          className="rounded-2xl p-7"
-          style={{
-            background: 'rgba(13,13,20,0.9)',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
-          }}
-        >
-          <div className="mb-4">
-            <span className="font-mono text-xs text-mint uppercase tracking-widest">
-              // knowledge
-            </span>
-          </div>
-          <h2
-            className="text-xl font-bold text-[var(--text-primary)] mb-4"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            On sharing knowledge
-          </h2>
-          <p
-            className="text-[var(--text-secondary)] leading-relaxed text-base sm:text-lg"
-            style={{ fontFamily: 'var(--font-body)' }}
-          >
-            &ldquo;I luv 2 code&rdquo; is only half the story. The rest is sharing. I believe every
-            senior engineer owes the community something — a blog post, a mentoring conversation, an
-            open-source tool, a detailed commit message. When I write code, I try to write it as if
-            the next person reading it is learning something new. Often, that person is me, six months
-            later.
-          </p>
-        </div>
-      </section>
+      </div>
     </div>
   )
 }
