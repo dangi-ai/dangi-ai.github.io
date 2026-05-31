@@ -1,15 +1,13 @@
 import type { Metadata } from 'next'
 import { Space_Grotesk, DM_Sans, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from '@/components/layout/ThemeProvider'
-import { Header } from '@/components/layout/Header'
+import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
-import { JsonLd } from '@/components/JsonLd'
 
 const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700', '800'],
 })
 
 const dmSans = DM_Sans({
@@ -27,7 +25,8 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://luv2code.in'),
   title: { default: 'Luv2code — Sushil Dangi', template: '%s | Luv2code' },
-  description: 'Engineering Manager & Backend Engineer. I luv 2 code. I luv 2 share what I learn.',
+  description:
+    'Engineering Manager & Backend Engineer. Java · Spring Boot · AWS. I luv 2 code. I luv 2 share what I learn.',
   openGraph: {
     type: 'website',
     url: 'https://luv2code.in',
@@ -42,24 +41,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${dmSans.variable} ${jetbrainsMono.variable} dark`}
-      suppressHydrationWarning
+      className={`${spaceGrotesk.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="min-h-dvh flex flex-col antialiased">
-        <JsonLd />
-        <ThemeProvider>
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-coral focus:text-white focus:font-mono focus:text-sm focus:rounded-lg"
-          >
-            Skip to main content
-          </a>
-          <Header />
-          <main id="main-content" className="flex-1">
-            {children}
-          </main>
-          <Footer />
-        </ThemeProvider>
+      <body className="min-h-dvh flex flex-col bg-paper text-ink antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:font-mono focus:text-sm focus:rounded-lg"
+        >
+          Skip to main content
+        </a>
+        <Nav />
+        <main id="main-content" className="flex-1 pt-16">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   )
