@@ -16,7 +16,7 @@ export function SocialCard({ href, platform, handle, iconBg, iconText, ariaLabel
       target="_blank"
       rel="noopener noreferrer"
       aria-label={ariaLabel}
-      className="bg-white border border-line rounded-lg p-4 flex items-center gap-4 hover:shadow-md transition-shadow group"
+      className="card-glass p-4 flex items-center gap-4 group"
     >
       <div
         className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 text-white font-bold text-sm"
@@ -31,7 +31,7 @@ export function SocialCard({ href, platform, handle, iconBg, iconText, ariaLabel
       </div>
       <ExternalLink
         size={14}
-        className="text-muted group-hover:text-accent transition-colors flex-shrink-0"
+        className="text-faint group-hover:text-cyan transition-colors flex-shrink-0"
         aria-hidden
       />
     </a>

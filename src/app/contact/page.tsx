@@ -12,7 +12,7 @@ const SOCIALS = [
     href:      'https://github.com/dangi-ai',
     platform:  'GitHub',
     handle:    'github.com/dangi-ai',
-    iconBg:    '#1A1714',
+    iconBg:    '#30363D',
     iconText:  'GH',
     ariaLabel: 'Sushil Dangi on GitHub',
   },
@@ -28,7 +28,7 @@ const SOCIALS = [
     href:      'https://x.com/s_dangi98',
     platform:  'X / Twitter',
     handle:    '@s_dangi98',
-    iconBg:    '#000000',
+    iconBg:    '#1F2430',
     iconText:  '𝕏',
     ariaLabel: 'Sushil Dangi on X',
   },
@@ -45,9 +45,9 @@ const SOCIALS = [
 export default function ContactPage() {
   return (
     <div className="max-w-5xl mx-auto px-8 py-16">
-      <p className="font-mono text-[10px] text-accent uppercase tracking-[0.2em] mb-4">Contact</p>
+      <p className="font-mono text-[10px] text-cyan uppercase tracking-[0.2em] mb-4">Contact</p>
       <h1 className="font-display text-4xl font-bold text-ink leading-tight mb-4">
-        Let&apos;s build something great.
+        Let&apos;s build something <span className="gradient-text">great</span>.
       </h1>
       <p className="text-muted leading-relaxed max-w-lg mb-12">
         I&apos;m always open to interesting conversations, collaborations, or just a good engineering chat.
@@ -62,7 +62,7 @@ export default function ContactPage() {
       <div className="text-center max-w-lg">
         <a
           href="mailto:sushil.dangi@luv2code.in"
-          className="inline-block bg-accent text-white font-semibold text-sm px-6 py-3 rounded-md hover:bg-accent-dark transition-colors"
+          className="inline-block btn-gradient font-semibold text-sm px-6 py-3 rounded-md"
         >
           Say hi via email →
         </a>

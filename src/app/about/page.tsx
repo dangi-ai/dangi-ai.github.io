@@ -22,9 +22,9 @@ const CATEGORIES: Skill['category'][] = ['language', 'framework', 'data', 'devop
 export default function AboutPage() {
   return (
     <div className="max-w-5xl mx-auto px-8 py-16">
-      <p className="font-mono text-[10px] text-accent uppercase tracking-[0.2em] mb-4">About</p>
+      <p className="font-mono text-[10px] text-cyan uppercase tracking-[0.2em] mb-4">About</p>
       <h1 className="font-display text-4xl font-bold text-ink leading-tight mb-10">
-        I luv 2 code.<br />I luv 2 share.
+        I luv 2 <span className="gradient-text">code</span>.<br />I luv 2 <span className="gradient-text">share</span>.
       </h1>
 
       <div className="max-w-2xl space-y-5 mb-14">
@@ -54,7 +54,7 @@ export default function AboutPage() {
             if (group.length === 0) return null
             return (
               <div key={cat}>
-                <p className="font-mono text-[10px] text-muted uppercase tracking-[0.15em] mb-3">
+                <p className="font-mono text-[10px] text-faint uppercase tracking-[0.15em] mb-3">
                   {CATEGORY_LABELS[cat]}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -63,8 +63,8 @@ export default function AboutPage() {
                       key={skill.name}
                       className={
                         skill.primary
-                          ? 'bg-accent-light text-accent-dark font-mono text-xs px-3 py-1 rounded'
-                          : 'bg-surface text-muted font-mono text-xs px-3 py-1 rounded'
+                          ? 'bg-violet/15 text-violet-light font-mono text-xs px-3 py-1 rounded'
+                          : 'bg-white/5 text-muted font-mono text-xs px-3 py-1 rounded'
                       }
                     >
                       {skill.name}
