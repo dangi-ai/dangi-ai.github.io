@@ -70,6 +70,9 @@ body {
     linear-gradient(#131A2A, #131A2A) padding-box,
     linear-gradient(135deg, rgba(124, 58, 237, 0.6), rgba(34, 211, 238, 0.6)) border-box;
 }
+.card-featured:hover {
+  border-color: transparent;
+}
 
 /* Violet→cyan gradient text */
 .gradient-text {
