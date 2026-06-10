@@ -38,7 +38,7 @@ export function RepoGrid({ repos }: RepoGridProps) {
             placeholder="Search repos…"
             value={query}
             onChange={e => setQuery(e.target.value)}
-            className="w-full bg-white border border-line rounded-md pl-8 pr-3 py-2 text-sm text-ink placeholder:text-muted focus:outline-none focus:border-accent transition-colors"
+            className="w-full bg-surface border border-line rounded-md pl-8 pr-3 py-2 text-sm text-ink placeholder:text-faint focus:outline-none focus:border-cyan transition-colors"
             aria-label="Search repositories"
           />
         </div>
@@ -46,7 +46,7 @@ export function RepoGrid({ repos }: RepoGridProps) {
         <select
           value={language}
           onChange={e => setLanguage(e.target.value)}
-          className="bg-white border border-line rounded-md px-3 py-2 text-sm text-ink focus:outline-none focus:border-accent transition-colors"
+          className="bg-surface border border-line rounded-md px-3 py-2 text-sm text-ink focus:outline-none focus:border-cyan transition-colors"
           aria-label="Filter by language"
         >
           {languages.map(l => (
@@ -57,7 +57,7 @@ export function RepoGrid({ repos }: RepoGridProps) {
         <select
           value={sort}
           onChange={e => setSort(e.target.value as 'stars' | 'updated')}
-          className="bg-white border border-line rounded-md px-3 py-2 text-sm text-ink focus:outline-none focus:border-accent transition-colors"
+          className="bg-surface border border-line rounded-md px-3 py-2 text-sm text-ink focus:outline-none focus:border-cyan transition-colors"
           aria-label="Sort repositories"
         >
           <option value="stars">Sort: Stars</option>
@@ -81,7 +81,7 @@ export function RepoGrid({ repos }: RepoGridProps) {
         </div>
       )}
 
-      <p className="mt-6 font-mono text-[10px] text-muted text-center">
+      <p className="mt-6 font-mono text-[10px] text-faint text-center">
         Showing {filtered.length} of {repos.length} repos · fetched from github.com/dangi-ai at build time
       </p>
     </div>

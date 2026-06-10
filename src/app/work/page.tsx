@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <div className="max-w-5xl mx-auto px-8 py-16">
-      <p className="font-mono text-[10px] text-accent uppercase tracking-[0.2em] mb-4">Work</p>
+      <p className="font-mono text-[10px] text-cyan uppercase tracking-[0.2em] mb-4">Work</p>
       <h1 className="font-display text-4xl font-bold text-ink leading-tight mb-10">
-        Open source repos
+        Open source <span className="gradient-text">repos</span>
       </h1>
       <RepoGrid repos={repos as Repo[]} />
     </div>

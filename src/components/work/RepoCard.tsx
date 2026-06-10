@@ -13,8 +13,8 @@ export function RepoCard({ repo, featured = false }: RepoCardProps) {
     <div
       role="article"
       onClick={() => window.open(repo.html_url, '_blank', 'noopener,noreferrer')}
-      className={`bg-white border border-line rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3 cursor-pointer ${
-        featured ? 'border-t-2 border-t-accent' : ''
+      className={`card-glass p-4 flex flex-col gap-3 cursor-pointer ${
+        featured ? 'card-featured' : ''
       }`}
     >
       <div className="flex items-start justify-between gap-2">
@@ -24,12 +24,12 @@ export function RepoCard({ repo, featured = false }: RepoCardProps) {
           rel="noopener noreferrer"
           onClick={e => e.stopPropagation()}
           className={`font-display font-bold text-sm leading-snug hover:underline ${
-            featured ? 'text-accent' : 'text-ink'
+            featured ? 'text-cyan' : 'text-ink'
           }`}
         >
           {repo.name}
         </a>
-        <ExternalLink size={12} className="text-muted flex-shrink-0 mt-0.5" aria-hidden />
+        <ExternalLink size={12} className="text-faint flex-shrink-0 mt-0.5" aria-hidden />
       </div>
 
       {repo.description && (
@@ -38,7 +38,7 @@ export function RepoCard({ repo, featured = false }: RepoCardProps) {
 
       <div className="flex flex-wrap gap-1.5">
         {repo.language && (
-          <span className="flex items-center gap-1 bg-surface font-mono text-[10px] px-2 py-0.5 rounded text-ink">
+          <span className="flex items-center gap-1 bg-white/5 font-mono text-[10px] px-2 py-0.5 rounded text-ink">
             <span
               className="w-2 h-2 rounded-full flex-shrink-0"
               style={{ background: getLanguageColor(repo.language) }}
@@ -48,13 +48,13 @@ export function RepoCard({ repo, featured = false }: RepoCardProps) {
           </span>
         )}
         {repo.topics.slice(0, 3).map(t => (
-          <span key={t} className="bg-surface text-muted font-mono text-[10px] px-2 py-0.5 rounded">
+          <span key={t} className="bg-white/5 text-muted font-mono text-[10px] px-2 py-0.5 rounded">
             {t}
           </span>
         ))}
       </div>
 
-      <div className="flex items-center gap-3 font-mono text-[10px] text-muted">
+      <div className="flex items-center gap-3 font-mono text-[10px] text-faint">
         <span className="flex items-center gap-1">
           <Star size={10} aria-hidden /> {repo.stargazers_count}
         </span>
@@ -67,7 +67,7 @@ export function RepoCard({ repo, featured = false }: RepoCardProps) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={e => e.stopPropagation()}
-            className="ml-auto text-accent hover:underline"
+            className="ml-auto text-cyan hover:underline"
             aria-label={`Live site for ${repo.name}`}
           >
             live ↗
