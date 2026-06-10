@@ -26,7 +26,7 @@ export function FeaturedRepos({ repos }: FeaturedReposProps) {
     <section className="max-w-5xl mx-auto px-8 py-12">
       <div className="flex items-baseline justify-between mb-6">
         <h2 className="font-display text-xl font-bold text-ink">Featured work</h2>
-        <Link href="/work" className="text-sm text-accent font-medium hover:text-accent-dark transition-colors">
+        <Link href="/work" className="text-sm text-cyan font-medium hover:text-violet-light transition-colors">
           View all repos →
         </Link>
       </div>
@@ -38,11 +38,11 @@ export function FeaturedRepos({ repos }: FeaturedReposProps) {
             href={repo.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-white border border-line rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3"
+            className="card-glass p-4 flex flex-col gap-3"
           >
             <div className="flex items-start justify-between gap-2">
-              <span className="font-display font-bold text-sm text-accent leading-snug">{repo.name}</span>
-              <span className="text-muted text-xs flex-shrink-0 mt-0.5" aria-hidden>↗</span>
+              <span className="font-display font-bold text-sm text-ink leading-snug">{repo.name}</span>
+              <span className="text-faint text-xs flex-shrink-0 mt-0.5" aria-hidden>↗</span>
             </div>
 
             {repo.description && (
@@ -51,7 +51,7 @@ export function FeaturedRepos({ repos }: FeaturedReposProps) {
 
             <div className="flex flex-wrap gap-1.5">
               {repo.language && (
-                <span className="flex items-center gap-1 bg-surface font-mono text-[10px] px-2 py-0.5 rounded text-ink">
+                <span className="flex items-center gap-1 bg-white/5 font-mono text-[10px] px-2 py-0.5 rounded text-ink">
                   <span
                     className="w-2 h-2 rounded-full flex-shrink-0"
                     style={{ background: getLanguageColor(repo.language) }}
@@ -61,13 +61,13 @@ export function FeaturedRepos({ repos }: FeaturedReposProps) {
                 </span>
               )}
               {repo.topics.slice(0, 2).map(t => (
-                <span key={t} className="font-mono text-[10px] px-2 py-0.5 rounded bg-surface text-muted">
+                <span key={t} className="font-mono text-[10px] px-2 py-0.5 rounded bg-white/5 text-muted">
                   {t}
                 </span>
               ))}
             </div>
 
-            <div className="flex items-center gap-3 font-mono text-[10px] text-muted">
+            <div className="flex items-center gap-3 font-mono text-[10px] text-faint">
               <span className="flex items-center gap-1">
                 <Star size={10} aria-hidden /> {repo.stargazers_count}
               </span>

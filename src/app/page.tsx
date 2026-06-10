@@ -3,6 +3,7 @@ import { Hero } from '@/components/home/Hero'
 import { StatsStrip } from '@/components/home/StatsStrip'
 import { TechStrip } from '@/components/home/TechStrip'
 import { FeaturedRepos } from '@/components/home/FeaturedRepos'
+import { Reveal } from '@/components/ui/Reveal'
 import { JsonLd } from '@/components/JsonLd'
 import repos from '@/data/repos.json'
 import type { Repo } from '@/lib/types'
@@ -19,9 +20,15 @@ export default function HomePage() {
     <>
       <JsonLd />
       <Hero />
-      <StatsStrip />
-      <TechStrip />
-      <FeaturedRepos repos={repos as Repo[]} />
+      <Reveal>
+        <StatsStrip />
+      </Reveal>
+      <Reveal delay={80}>
+        <TechStrip />
+      </Reveal>
+      <Reveal>
+        <FeaturedRepos repos={repos as Repo[]} />
+      </Reveal>
     </>
   )
 }
