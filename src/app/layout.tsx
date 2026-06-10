@@ -43,10 +43,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${spaceGrotesk.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="min-h-dvh flex flex-col bg-paper text-ink antialiased">
+      <body className="min-h-dvh flex flex-col bg-bg text-ink antialiased">
+        <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-violet/20 blur-[140px]" />
+          <div className="absolute -bottom-40 -left-40 w-[520px] h-[520px] rounded-full bg-cyan/10 blur-[140px]" />
+        </div>
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:font-mono focus:text-sm focus:rounded-lg"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan focus:text-bg focus:font-mono focus:text-sm focus:rounded-lg"
         >
           Skip to main content
         </a>
