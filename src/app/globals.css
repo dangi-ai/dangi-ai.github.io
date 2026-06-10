@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Palette tokens — use as: bg-paper, text-ink, text-accent, etc. */
-  --color-paper:        #F8F7F4;
-  --color-surface:      #F0EDE8;
-  --color-line:         #E5E1DA;
-  --color-muted:        #6B6560;
-  --color-ink:          #1A1714;
-  --color-accent:       #059669;
-  --color-accent-light: #D1FAE5;
-  --color-accent-dark:  #047857;
+  /* Midnight Glow palette — use as: bg-bg, bg-surface, text-ink, text-cyan, etc. */
+  --color-bg:           #0B0F1A;
+  --color-surface:      rgba(255, 255, 255, 0.04);
+  --color-line:         rgba(255, 255, 255, 0.08);
+  --color-ink:          #F8FAFC;
+  --color-muted:        #94A3B8;
+  --color-faint:        #64748B;
+  --color-violet:       #7C3AED;
+  --color-violet-light: #A78BFA;
+  --color-cyan:         #22D3EE;
 
   /* Font variables */
   --font-display: var(--font-space-grotesk), "Space Grotesk", system-ui, sans-serif;
@@ -25,33 +26,81 @@
   }
 }
 
-/* CSS custom properties for use in arbitrary Tailwind values */
+/* Gradients shared by the utility classes below */
 :root {
-  --paper:        #F8F7F4;
-  --surface:      #F0EDE8;
-  --line:         #E5E1DA;
-  --muted:        #6B6560;
-  --ink:          #1A1714;
-  --accent:       #059669;
-  --accent-light: #D1FAE5;
-  --accent-dark:  #047857;
+  --gradient-text: linear-gradient(90deg, #A78BFA, #22D3EE);
+  --gradient-btn:  linear-gradient(90deg, #7C3AED, #22D3EE);
 }
 
 /* Base */
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; color-scheme: dark; }
 
 body {
-  background-color: var(--paper);
-  color: var(--ink);
+  background-color: #0B0F1A;
+  color: #F8FAFC;
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
 }
 
-/* Focus ring uses emerald accent */
+/* Focus ring uses cyan accent */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid #22D3EE;
   outline-offset: 3px;
   border-radius: 4px;
+}
+
+/* Glass card surface with hover lift + border glow */
+.card-glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.card-glass:hover {
+  transform: translateY(-2px);
+  border-color: rgba(34, 211, 238, 0.35);
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.08);
+}
+
+/* Featured card: 1px violet→cyan gradient border (opaque inner layer
+   required for the padding-box/border-box trick) */
+.card-featured {
+  border-color: transparent;
+  background:
+    linear-gradient(#131A2A, #131A2A) padding-box,
+    linear-gradient(135deg, rgba(124, 58, 237, 0.6), rgba(34, 211, 238, 0.6)) border-box;
+}
+
+/* Violet→cyan gradient text */
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Primary gradient button */
+.btn-gradient {
+  background: var(--gradient-btn);
+  color: #fff;
+  transition: opacity 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-gradient:hover {
+  opacity: 0.9;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.35);
+}
+
+/* Scroll reveal (used by the Reveal component) */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: none;
 }
 
 /* Respect reduced motion */
@@ -60,4 +109,5 @@ body {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+  .reveal { opacity: 1; transform: none; }
 }
