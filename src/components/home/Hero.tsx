@@ -42,80 +42,81 @@ const SOCIALS = [
 export function Hero() {
   return (
     <section className="border-b border-line">
-      <div className="max-w-5xl mx-auto px-8 pt-24 pb-16 flex flex-col items-center text-center">
+      <div className="max-w-5xl mx-auto px-8 pt-20 pb-14 flex flex-col-reverse md:flex-row items-center gap-10 md:gap-14">
 
-        <p
-          className="font-mono text-[10px] text-accent uppercase tracking-[0.2em] mb-5 animate-fade-up"
-          style={{ animationDelay: '0ms' }}
-        >
-          Senior Java / Spring Boot Lead · 10+ Years
-        </p>
-
-        <h1
-          className="font-display text-5xl md:text-6xl font-bold text-ink leading-[1.05] mb-5 animate-fade-up"
-          style={{ animationDelay: '60ms' }}
-        >
-          Hi, I&apos;m Sushil Dangi
-        </h1>
-
-        <p
-          className="text-muted text-lg leading-relaxed max-w-xl mb-3 animate-fade-up"
-          style={{ animationDelay: '120ms' }}
-        >
-          I build scalable backend systems and lead engineering teams to ship production code daily.
-        </p>
-        <p
-          className="text-ink font-medium text-base mb-8 animate-fade-up"
-          style={{ animationDelay: '160ms' }}
-        >
-          I luv 2 code. I luv 2 share what I learn.
-        </p>
-
-        <div
-          className="flex gap-3 flex-wrap justify-center mb-8 animate-fade-up"
-          style={{ animationDelay: '200ms' }}
-        >
-          <Link
-            href="/work"
-            className="bg-accent text-white text-sm font-semibold px-6 py-3 rounded-md hover:bg-accent-dark transition-colors"
+        <div className="flex-1 text-center md:text-left">
+          <p
+            className="font-mono text-[10px] text-cyan uppercase tracking-[0.2em] mb-5 animate-fade-up"
+            style={{ animationDelay: '0ms' }}
           >
-            View my work →
-          </Link>
-          <Link
-            href="/contact"
-            className="border-[1.5px] border-ink text-ink text-sm font-medium px-6 py-3 rounded-md hover:bg-surface transition-colors"
+            Senior Java / Spring Boot Lead · 10+ Years
+          </p>
+
+          <h1
+            className="font-display text-5xl md:text-6xl font-bold text-ink leading-[1.05] mb-5 animate-fade-up"
+            style={{ animationDelay: '60ms' }}
           >
-            Get in touch
-          </Link>
-        </div>
+            Hi, I&apos;m <span className="gradient-text">Sushil Dangi</span>
+          </h1>
 
-        <div
-          className="animate-fade-up"
-          style={{ animationDelay: '240ms' }}
-        >
-          <img
-            src="/headshot.png"
-            alt="Sushil Dangi"
-            className="w-28 h-28 rounded-full object-cover border-4 border-line shadow-sm"
-          />
-        </div>
+          <p
+            className="text-muted text-lg leading-relaxed max-w-xl mb-3 animate-fade-up"
+            style={{ animationDelay: '120ms' }}
+          >
+            I build scalable backend systems and lead engineering teams to ship production code daily.
+          </p>
+          <p
+            className="text-ink font-medium text-base mb-8 animate-fade-up"
+            style={{ animationDelay: '160ms' }}
+          >
+            I luv 2 code. I luv 2 share what I learn.
+          </p>
 
-        <div
-          className="flex items-center gap-5 mt-6 animate-fade-up"
-          style={{ animationDelay: '280ms' }}
-        >
-          {SOCIALS.map(({ href, icon: Icon, label }) => (
-            <a
-              key={href}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className="text-muted hover:text-accent transition-colors"
+          <div
+            className="flex gap-3 flex-wrap justify-center md:justify-start mb-8 animate-fade-up"
+            style={{ animationDelay: '200ms' }}
+          >
+            <Link
+              href="/work"
+              className="btn-gradient text-sm font-semibold px-6 py-3 rounded-md"
             >
-              <Icon size={18} />
-            </a>
-          ))}
+              View my work →
+            </Link>
+            <Link
+              href="/contact"
+              className="border border-line text-ink text-sm font-medium px-6 py-3 rounded-md hover:bg-surface hover:border-cyan/40 transition-colors"
+            >
+              Get in touch
+            </Link>
+          </div>
+
+          <div
+            className="flex items-center gap-5 justify-center md:justify-start animate-fade-up"
+            style={{ animationDelay: '240ms' }}
+          >
+            {SOCIALS.map(({ href, icon: Icon, label }) => (
+              <a
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="text-muted hover:text-cyan transition-colors"
+              >
+                <Icon size={18} />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="animate-fade-up" style={{ animationDelay: '120ms' }}>
+          <div className="w-40 h-40 md:w-52 md:h-52 rounded-full p-[3px] bg-gradient-to-br from-violet to-cyan shadow-[0_0_40px_rgba(124,58,237,0.25)]">
+            <img
+              src="/headshot.png"
+              alt="Sushil Dangi"
+              className="w-full h-full rounded-full object-cover"
+            />
+          </div>
         </div>
 
       </div>
