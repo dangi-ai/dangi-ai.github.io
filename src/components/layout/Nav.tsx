@@ -31,7 +31,7 @@ export function Nav() {
     <nav
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-200 ${
         scrolled
-          ? 'bg-paper/80 backdrop-blur-md border-b border-line shadow-sm'
+          ? 'bg-bg/80 backdrop-blur-md border-b border-line'
           : ''
       }`}
     >
@@ -39,9 +39,9 @@ export function Nav() {
         {/* Logo */}
         <Link
           href="/"
-          className="font-mono font-bold text-ink text-sm tracking-tight hover:text-accent transition-colors"
+          className="font-mono font-bold text-ink text-sm tracking-tight hover:text-cyan transition-colors"
         >
-          luv2code
+          luv2code<span className="text-cyan">_</span>
         </Link>
 
         {/* Desktop links */}
@@ -52,7 +52,7 @@ export function Nav() {
               href={href}
               className={`text-sm transition-colors ${
                 pathname === href
-                  ? 'text-accent font-semibold'
+                  ? 'text-cyan font-semibold'
                   : 'text-muted hover:text-ink'
               }`}
             >
@@ -61,10 +61,8 @@ export function Nav() {
           ))}
           <Link
             href="/contact"
-            className={`text-sm font-semibold px-3 py-1.5 rounded-md transition-colors ${
-              pathname === '/contact'
-                ? 'bg-accent-dark text-white'
-                : 'bg-accent text-white hover:bg-accent-dark'
+            className={`btn-gradient text-sm font-semibold px-3 py-1.5 rounded-md ${
+              pathname === '/contact' ? 'ring-1 ring-cyan' : ''
             }`}
           >
             Contact
@@ -84,13 +82,13 @@ export function Nav() {
 
       {/* Mobile overlay */}
       {open && (
-        <div className="md:hidden bg-surface border-b border-line px-8 py-6 flex flex-col gap-5">
+        <div className="md:hidden bg-bg border-b border-line px-8 py-6 flex flex-col gap-5">
           {NAV_LINKS.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
               className={`text-sm ${
-                pathname === href ? 'text-accent font-semibold' : 'text-muted'
+                pathname === href ? 'text-cyan font-semibold' : 'text-muted'
               }`}
             >
               {label}
@@ -98,7 +96,7 @@ export function Nav() {
           ))}
           <Link
             href="/contact"
-            className="text-sm font-semibold bg-accent text-white px-3 py-2 rounded-md text-center"
+            className="btn-gradient text-sm font-semibold px-3 py-2 rounded-md text-center"
           >
             Contact
           </Link>

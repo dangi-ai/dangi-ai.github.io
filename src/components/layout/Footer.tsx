@@ -52,7 +52,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="text-muted hover:text-accent transition-colors"
+              className="text-muted hover:text-cyan transition-colors"
             >
               <Icon size={16} />
             </a>
