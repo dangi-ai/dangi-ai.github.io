@@ -27,7 +27,7 @@ function monogram(name: string): string {
 
 export function SkillCard({ skill }: SkillCardProps) {
   return (
-    <div className="bg-white border border-line rounded-lg p-3 flex flex-col items-center gap-2 min-w-[80px] hover:shadow-sm transition-shadow">
+    <div className="card-glass p-3 flex flex-col items-center gap-2 min-w-[80px]">
       <div className="w-8 h-8 flex items-center justify-center" aria-hidden>
         {skill.iconSlug ? (
           <img
@@ -45,7 +45,7 @@ export function SkillCard({ skill }: SkillCardProps) {
           />
         ) : null}
         <span
-          className="w-8 h-8 rounded items-center justify-center bg-surface text-muted font-mono text-xs font-bold select-none"
+          className="w-8 h-8 rounded items-center justify-center bg-white/10 text-muted font-mono text-xs font-bold select-none"
           style={{ display: skill.iconSlug ? 'none' : 'flex' }}
         >
           {monogram(skill.name)}
