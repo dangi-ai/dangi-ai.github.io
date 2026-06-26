@@ -59,14 +59,22 @@ export default function ContactPage() {
         ))}
       </div>
 
-      <div className="text-center max-w-lg">
+      <div className="flex flex-col items-center gap-4 max-w-lg">
+        <a
+          href="https://forms.gle/BxA5PbKYNEWuNo1cA"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block btn-gradient font-semibold text-sm px-6 py-3 rounded-md"
+        >
+          Fill out the contact form →
+        </a>
         <a
           href="mailto:sushil.dangi@luv2code.in"
           className="inline-block btn-gradient font-semibold text-sm px-6 py-3 rounded-md"
         >
           Say hi via email →
         </a>
-        <p className="font-mono text-xs text-muted mt-3">sushil.dangi@luv2code.in</p>
+        <p className="font-mono text-xs text-muted">sushil.dangi@luv2code.in</p>
       </div>
     </div>
   )
