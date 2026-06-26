@@ -53,7 +53,7 @@ export default function ContactPage() {
         I&apos;m always open to interesting conversations, collaborations, or just a good engineering chat.
       </p>
 
-      <div className="grid lg:grid-cols-2 gap-8 items-start mb-12">
+      <div className="grid lg:grid-cols-[1fr_1.6fr] gap-8 items-start mb-12">
         <div className="flex flex-col gap-3">
           {SOCIALS.map(s => (
             <SocialCard key={s.href} {...s} />
@@ -65,7 +65,7 @@ export default function ContactPage() {
             src="https://docs.google.com/forms/d/e/1FAIpQLSdPkUDE0KYuGpw1YVy30UTB7mxROvChNpJURDH3Yzh1r32i2Q/viewform?embedded=true"
             title="Contact form"
             className="w-full rounded-lg"
-            height={1180}
+            height={1150}
             loading="lazy"
           >
             Loading…
