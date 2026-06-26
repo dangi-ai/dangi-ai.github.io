@@ -53,21 +53,27 @@ export default function ContactPage() {
         I&apos;m always open to interesting conversations, collaborations, or just a good engineering chat.
       </p>
 
-      <div className="flex flex-col gap-3 max-w-lg mb-12">
-        {SOCIALS.map(s => (
-          <SocialCard key={s.href} {...s} />
-        ))}
+      <div className="grid lg:grid-cols-2 gap-8 items-start mb-12">
+        <div className="flex flex-col gap-3">
+          {SOCIALS.map(s => (
+            <SocialCard key={s.href} {...s} />
+          ))}
+        </div>
+
+        <div className="card-glass p-2 sm:p-3 overflow-hidden rounded-xl">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdPkUDE0KYuGpw1YVy30UTB7mxROvChNpJURDH3Yzh1r32i2Q/viewform?embedded=true"
+            title="Contact form"
+            className="w-full rounded-lg"
+            height={1180}
+            loading="lazy"
+          >
+            Loading…
+          </iframe>
+        </div>
       </div>
 
-      <div className="flex flex-col items-center gap-4 max-w-lg">
-        <a
-          href="https://forms.gle/BxA5PbKYNEWuNo1cA"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block btn-gradient font-semibold text-sm px-6 py-3 rounded-md"
-        >
-          Fill out the contact form →
-        </a>
+      <div className="flex flex-col items-center gap-4 max-w-lg mx-auto">
         <a
           href="mailto:sushil.dangi@luv2code.in"
           className="inline-block btn-gradient font-semibold text-sm px-6 py-3 rounded-md"
