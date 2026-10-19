@@ -1,39 +1,32 @@
-import { ExternalLink } from 'lucide-react'
-
 interface SocialCardProps {
   href: string
   platform: string
   handle: string
-  iconBg: string
-  iconText: string
   ariaLabel: string
+  index: number
 }
 
-export function SocialCard({ href, platform, handle, iconBg, iconText, ariaLabel }: SocialCardProps) {
+// Index row: number · platform in serif · handle; arrow on the right.
+export function SocialCard({ href, platform, handle, ariaLabel, index }: SocialCardProps) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={ariaLabel}
-      className="card-glass p-4 flex items-center gap-4 group"
+      className="index-row group"
     >
-      <div
-        className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 text-white font-bold text-sm"
-        style={{ background: iconBg }}
+      <span className="index-num">{String(index).padStart(2, '0')}</span>
+      <span className="min-w-0">
+        <span className="index-name t-lead block text-paper">{platform}</span>
+        <span className="mt-1.5 block truncate tracked text-[0.6rem] text-faint">{handle}</span>
+      </span>
+      <span
         aria-hidden
+        className="text-faint transition-transform duration-500 ease-editorial group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-paper"
       >
-        {iconText}
-      </div>
-      <div className="flex-1 min-w-0">
-        <p className="font-display font-bold text-sm text-ink">{platform}</p>
-        <p className="font-mono text-xs text-muted truncate">{handle}</p>
-      </div>
-      <ExternalLink
-        size={14}
-        className="text-faint group-hover:text-cyan transition-colors flex-shrink-0"
-        aria-hidden
-      />
+        ↗
+      </span>
     </a>
   )
 }

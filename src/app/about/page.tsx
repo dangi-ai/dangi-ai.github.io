@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { skills } from '@/data/skills'
 import type { Skill } from '@/lib/types'
+import { PageHeader } from '@/components/ui/PageHeader'
+import { Reveal } from '@/components/ui/Reveal'
 
 export const metadata: Metadata = {
   title: 'About',
@@ -21,61 +23,81 @@ const CATEGORIES: Skill['category'][] = ['language', 'framework', 'data', 'devop
 
 export default function AboutPage() {
   return (
-    <div className="max-w-5xl mx-auto px-8 py-16">
-      <p className="font-mono text-[10px] text-cyan uppercase tracking-[0.2em] mb-4">About</p>
-      <h1 className="font-display text-4xl font-bold text-ink leading-tight mb-10">
-        I luv 2 <span className="gradient-text">code</span>.<br />I luv 2 <span className="gradient-text">share</span>.
-      </h1>
+    <div className="page pb-[var(--gutter-block)]">
+      <PageHeader
+        eyebrow="About"
+        title={[<>I luv 2 <em>code.</em></>, <>I luv 2 <em>share.</em></>]}
+      />
 
-      <div className="max-w-2xl space-y-5 mb-14">
-        <p className="text-muted leading-relaxed">
-          Senior Java Backend Lead with 10+ years of experience engineering scalable, distributed
-          systems. Currently Senior Team Lead at Technoboost Services, leading a team of 15
-          developers building microservices with Java, Spring Boot, and Hibernate — with a focus
-          on clean architecture, performance, and mentoring.
-        </p>
-        <p className="text-muted leading-relaxed">
-          I&apos;ve worked across the full backend spectrum: high-throughput REST APIs, 5-service
-          microservice architectures processing ~100,000 transactions per day, PostgreSQL
-          optimisation, CI/CD pipelines, and cloud deployments on AWS.
-        </p>
-        <p className="text-muted leading-relaxed">
-          Beyond the code, I believe strongly in sharing what I learn — through open-source,
-          writing, and building in public. That&apos;s the whole point of Luv2code.
-        </p>
-      </div>
+      <Reveal>
+        <div className="grid md:grid-cols-[1fr_260px] gap-12 md:gap-20 items-start">
+          <div className="max-w-2xl space-y-6 text-[0.98rem] leading-[1.75] text-muted">
+            <p className="t-lead text-paper">
+              Senior Java backend lead with ten years spent engineering distributed systems and
+              the teams that run them.
+            </p>
+            <p>
+              Currently Senior Team Lead at Technoboost Services, leading a team of 15 developers
+              building microservices with Java, Spring Boot, and Hibernate — with a focus on clean
+              architecture, performance, and mentoring.
+            </p>
+            <p>
+              I&apos;ve worked across the full backend spectrum: high-throughput REST APIs, 5-service
+              microservice architectures processing ~100,000 transactions per day, PostgreSQL
+              optimisation, CI/CD pipelines, and cloud deployments on AWS.
+            </p>
+            <p>
+              Beyond the code, I believe strongly in sharing what I learn — through open-source,
+              writing, and building in public. That&apos;s the whole point of Luv2code.
+            </p>
+          </div>
 
-      <div className="border-t border-line pt-10">
-        <h2 className="font-display text-xl font-bold text-ink mb-8">Skills &amp; Technologies</h2>
-
-        <div className="space-y-8">
-          {CATEGORIES.map(cat => {
-            const group = skills.filter(s => s.category === cat)
-            if (group.length === 0) return null
-            return (
-              <div key={cat}>
-                <p className="font-mono text-[10px] text-faint uppercase tracking-[0.15em] mb-3">
-                  {CATEGORY_LABELS[cat]}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {group.map(skill => (
-                    <span
-                      key={skill.name}
-                      className={
-                        skill.primary
-                          ? 'bg-violet/15 text-violet-light font-mono text-xs px-3 py-1 rounded'
-                          : 'bg-white/5 text-muted font-mono text-xs px-3 py-1 rounded'
-                      }
-                    >
-                      {skill.name}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )
-          })}
+          <div className="relative mt-2 justify-self-start md:justify-self-end">
+            <div aria-hidden className="absolute -inset-3 border border-line translate-x-3 translate-y-3" />
+            <img
+              src="/headshot.png"
+              alt="Sushil Dangi"
+              width={260}
+              height={320}
+              className="portrait relative block h-[320px] w-[260px] object-cover object-top"
+            />
+          </div>
         </div>
-      </div>
+      </Reveal>
+
+      <Reveal>
+        <section className="mt-[var(--gutter-block)]">
+          <div className="flex items-baseline justify-between mb-10">
+            <h2 className="t-statement text-paper">
+              Skills &amp; <em>technologies.</em>
+            </h2>
+          </div>
+
+          <div>
+            {CATEGORIES.map((cat, i) => {
+              const group = skills.filter(s => s.category === cat)
+              if (group.length === 0) return null
+              return (
+                <div key={cat} className="fact grid md:grid-cols-[3rem_14rem_1fr] gap-x-6 gap-y-3 items-baseline">
+                  <span className="index-num">{String(i + 1).padStart(2, '0')}</span>
+                  <p className="eyebrow">{CATEGORY_LABELS[cat]}</p>
+                  <ul className="flex flex-wrap items-baseline gap-y-2">
+                    {group.map((skill, j) => (
+                      <li
+                        key={skill.name}
+                        className={`tracked flex items-baseline ${skill.primary ? 'text-paper' : 'text-muted'}`}
+                      >
+                        {j > 0 && <span aria-hidden className="mx-3 text-faint">·</span>}
+                        {skill.name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            })}
+          </div>
+        </section>
+      </Reveal>
     </div>
   )
 }

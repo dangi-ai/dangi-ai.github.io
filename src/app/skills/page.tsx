@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { skills, CATEGORIES } from '@/data/skills'
 import { SkillGroup } from '@/components/skills/SkillGroup'
+import { PageHeader } from '@/components/ui/PageHeader'
+import { Reveal } from '@/components/ui/Reveal'
 
 export const metadata: Metadata = {
   title: 'Skills',
@@ -11,17 +13,22 @@ export const metadata: Metadata = {
 
 export default function SkillsPage() {
   return (
-    <div className="max-w-5xl mx-auto px-8 py-16">
-      <p className="font-mono text-[10px] text-cyan uppercase tracking-[0.2em] mb-4">Skills</p>
-      <h1 className="font-display text-4xl font-bold text-ink leading-tight mb-12">
-        <span className="gradient-text">Tech</span> I work with
-      </h1>
+    <div className="page pb-[var(--gutter-block)]">
+      <PageHeader
+        eyebrow="Skills"
+        title={['The tools', <em key="w">I work with.</em>]}
+        lead="A backend-first stack. Java and Spring Boot at the centre, PostgreSQL underneath, AWS around it."
+      />
 
-      <div className="space-y-12">
-        {CATEGORIES.map(({ key, label }) => {
+      <div>
+        {CATEGORIES.map(({ key, label }, i) => {
           const group = skills.filter(s => s.category === key)
           if (group.length === 0) return null
-          return <SkillGroup key={key} label={label} skills={group} />
+          return (
+            <Reveal key={key} delay={i * 40}>
+              <SkillGroup index={i + 1} label={label} skills={group} />
+            </Reveal>
+          )
         })}
       </div>
     </div>

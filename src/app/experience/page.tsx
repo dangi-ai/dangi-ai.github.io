@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { experience, education } from '@/data/experience'
 import { TimelineEntry } from '@/components/experience/TimelineEntry'
+import { PageHeader } from '@/components/ui/PageHeader'
+import { Reveal } from '@/components/ui/Reveal'
 
 export const metadata: Metadata = {
   title: 'Experience',
@@ -11,47 +13,43 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <div className="max-w-5xl mx-auto px-8 py-16">
-      <p className="font-mono text-[10px] text-cyan uppercase tracking-[0.2em] mb-4">
-        Experience
-      </p>
-      <h1 className="font-display text-4xl font-bold text-ink leading-tight mb-2">
-        Career <span className="gradient-text">timeline</span>
-      </h1>
-      <p className="text-muted text-sm mb-12">10+ years · Java · Spring Boot · Distributed Systems</p>
+    <div className="page pb-[var(--gutter-block)]">
+      <PageHeader
+        eyebrow="Experience"
+        title={['Ten years,', <em key="l">one line at a time.</em>]}
+        lead="Java · Spring Boot · Distributed systems · Leading teams"
+      />
 
-      {/* Work experience */}
-      <div className="max-w-2xl">
+      <section aria-label="Work experience">
         {experience.map((entry, i) => (
-          <TimelineEntry
-            key={`${entry.company}-${entry.period}`}
-            entry={entry}
-            isLast={i === experience.length - 1}
-          />
+          <Reveal key={`${entry.company}-${entry.period}`} delay={i * 40}>
+            <TimelineEntry entry={entry} index={experience.length - i} />
+          </Reveal>
         ))}
-      </div>
+      </section>
 
-      {/* Education */}
-      <div className="max-w-2xl mt-16 border-t border-line pt-12">
-        <h2 className="font-display text-xl font-bold text-ink mb-8">Education</h2>
-        <div className="space-y-8">
-          {education.map((edu) => (
-            <div key={edu.degree} className="flex gap-5">
-              <div className="flex flex-col items-center flex-shrink-0 pt-1">
-                <div className="w-3 h-3 rounded-full bg-bg border-2 border-line flex-shrink-0" />
+      <Reveal>
+        <section className="mt-[var(--gutter-block)]" aria-label="Education">
+          <h2 className="t-statement text-paper mb-10">
+            <em>Education.</em>
+          </h2>
+          {education.map((edu, i) => (
+            <div key={edu.degree} className="fact grid md:grid-cols-[3rem_14rem_1fr] gap-x-6 gap-y-3 items-baseline">
+              <span className="index-num">{String(education.length - i).padStart(2, '0')}</span>
+              <div className="flex flex-col gap-1.5">
+                <span className="tracked text-[0.62rem] text-paper/80">{edu.period}</span>
+                <span className="tracked text-[0.6rem] text-faint">{edu.institution}</span>
               </div>
               <div>
-                <h3 className="font-display font-bold text-ink text-base">{edu.degree}</h3>
-                <p className="font-mono text-[11px] text-cyan mt-1">{edu.institution}</p>
-                <p className="font-mono text-[11px] text-muted mt-0.5">{edu.period}</p>
+                <h3 className="t-lead text-paper">{edu.degree}</h3>
                 {edu.notes && (
-                  <p className="text-sm text-muted leading-relaxed mt-3">{edu.notes}</p>
+                  <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">{edu.notes}</p>
                 )}
               </div>
             </div>
           ))}
-        </div>
-      </div>
+        </section>
+      </Reveal>
     </div>
   )
 }

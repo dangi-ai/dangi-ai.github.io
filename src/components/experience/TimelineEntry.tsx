@@ -2,51 +2,47 @@ import type { ExperienceEntry } from '@/lib/types'
 
 interface TimelineEntryProps {
   entry: ExperienceEntry
-  isLast: boolean
+  index: number
 }
 
-export function TimelineEntry({ entry, isLast }: TimelineEntryProps) {
+// Fact row: index · period/location column · role, company, bullets, stack.
+export function TimelineEntry({ entry, index }: TimelineEntryProps) {
   return (
-    <div className="flex gap-5">
-      <div className="flex flex-col items-center flex-shrink-0 pt-1">
-        <div
-          className={`w-3 h-3 rounded-full flex-shrink-0 ${
-            entry.current
-              ? 'bg-gradient-to-br from-violet to-cyan shadow-[0_0_12px_rgba(34,211,238,0.5)]'
-              : 'bg-bg border-2 border-cyan'
-          }`}
-        />
-        {!isLast && (
-          <div className="w-0.5 flex-1 bg-gradient-to-b from-violet/60 to-cyan/60 mt-1.5" />
+    <article className="fact grid md:grid-cols-[3rem_14rem_1fr] gap-x-6 gap-y-4 items-baseline">
+      <span className="index-num">{String(index).padStart(2, '0')}</span>
+
+      <div className="flex flex-col gap-1.5">
+        <span className="tracked text-[0.62rem] text-paper/80">
+          {entry.current ? 'Now' : entry.period}
+        </span>
+        {entry.current && (
+          <span className="tracked text-[0.6rem] text-faint">{entry.period}</span>
         )}
+        <span className="tracked text-[0.6rem] text-faint">{entry.location}</span>
       </div>
 
-      <div className={`flex-1 ${isLast ? '' : 'pb-10'}`}>
-        <div className="card-glass p-5">
-          <h3 className="font-display font-bold text-ink text-base">{entry.role}</h3>
-          <p className="font-mono text-[11px] text-cyan mt-1">
-            {entry.company} · {entry.period}
-          </p>
-          <p className="font-mono text-[11px] text-muted mt-0.5">{entry.location}</p>
+      <div>
+        <h3 className="t-lead text-paper">{entry.role}</h3>
+        <p className="eyebrow mt-3">{entry.company}</p>
 
-          <ul className="mt-4 space-y-1.5">
-            {entry.bullets.map((b, i) => (
-              <li key={i} className="text-sm text-muted leading-relaxed flex gap-2">
-                <span className="text-cyan mt-1 flex-shrink-0" aria-hidden>·</span>
-                {b}
-              </li>
-            ))}
-          </ul>
+        <ul className="mt-6 max-w-2xl space-y-3">
+          {entry.bullets.map((b, i) => (
+            <li key={i} className="flex gap-4 text-sm leading-relaxed text-muted">
+              <span aria-hidden className="mt-[0.7em] h-px w-4 flex-shrink-0 bg-paper/40" />
+              {b}
+            </li>
+          ))}
+        </ul>
 
-          <div className="flex flex-wrap gap-1.5 mt-4">
-            {entry.tech.map(t => (
-              <span key={t} className="bg-white/5 text-muted font-mono text-[10px] px-2 py-0.5 rounded">
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
+        <ul className="mt-6 flex flex-wrap items-baseline gap-y-2">
+          {entry.tech.map((t, i) => (
+            <li key={t} className="tracked flex items-baseline text-[0.6rem] text-faint">
+              {i > 0 && <span aria-hidden className="mx-3">·</span>}
+              {t}
+            </li>
+          ))}
+        </ul>
       </div>
-    </div>
+    </article>
   )
 }

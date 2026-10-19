@@ -1,124 +1,72 @@
 import Link from 'next/link'
-
-function GitHubIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-    </svg>
-  )
-}
-
-function LinkedInIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
-  )
-}
-
-function XIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.745l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-    </svg>
-  )
-}
-
-function InstagramIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-    </svg>
-  )
-}
-
-const SOCIALS = [
-  { href: 'https://github.com/dangi-ai',                   icon: GitHubIcon,    label: 'GitHub' },
-  { href: 'https://www.linkedin.com/in/sushil-dangi/',     icon: LinkedInIcon,  label: 'LinkedIn' },
-  { href: 'https://x.com/s_dangi98',                       icon: XIcon,         label: 'X / Twitter' },
-  { href: 'https://www.instagram.com/smiley_s_d/',         icon: InstagramIcon, label: 'Instagram' },
-]
+import { LineReveal } from '@/components/ui/LineReveal'
+import { Reveal } from '@/components/ui/Reveal'
+import { ScrollHint } from '@/components/ui/ScrollHint'
 
 export function Hero() {
   return (
-    <section className="border-b border-line">
-      <div className="max-w-5xl mx-auto px-8 pt-20 pb-14 flex flex-col-reverse md:flex-row items-center gap-10 md:gap-14">
+    <section className="relative border-b border-line" aria-label="Introduction">
+      {/* Scrim: darker at the lower-left where the type sits (reference: .opening__scrim) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            'linear-gradient(100deg, rgba(9,12,16,0.7) 0%, rgba(9,12,16,0.3) 40%, rgba(9,12,16,0) 65%), linear-gradient(to bottom, rgba(9,12,16,0) 70%, rgba(9,12,16,0.5) 100%)',
+        }}
+      />
 
-        <div className="flex-1 text-center md:text-left">
-          <p
-            className="font-mono text-[10px] text-cyan uppercase tracking-[0.2em] mb-5 animate-fade-up"
-            style={{ animationDelay: '0ms' }}
-          >
-            Senior Java / Spring Boot Lead · 10+ Years
-          </p>
+      <div className="page relative min-h-[calc(100svh-4rem)] flex flex-col justify-end">
+        <div className="grid md:grid-cols-[1fr_auto] items-end gap-10 pt-24 pb-16 sm:pb-36 md:pb-44">
+          <Reveal immediate>
+            <p className="eyebrow mb-7">Senior Java / Spring Boot Lead · 10+ years · Bengaluru</p>
 
-          <h1
-            className="font-display text-5xl md:text-6xl font-bold text-ink leading-[1.05] mb-5 animate-fade-up"
-            style={{ animationDelay: '60ms' }}
-          >
-            Hi, I&apos;m <span className="gradient-text">Sushil Dangi</span>
-          </h1>
-
-          <p
-            className="text-muted text-lg leading-relaxed max-w-xl mb-3 animate-fade-up"
-            style={{ animationDelay: '120ms' }}
-          >
-            I build scalable backend systems and lead engineering teams to ship production code daily.
-          </p>
-          <p
-            className="text-ink font-medium text-base mb-8 animate-fade-up"
-            style={{ animationDelay: '160ms' }}
-          >
-            I luv 2 code. I luv 2 share what I learn.
-          </p>
-
-          <div
-            className="flex gap-3 flex-wrap justify-center md:justify-start mb-8 animate-fade-up"
-            style={{ animationDelay: '200ms' }}
-          >
-            <Link
-              href="/work"
-              className="btn-gradient text-sm font-semibold px-6 py-3 rounded-md"
-            >
-              View my work →
-            </Link>
-            <Link
-              href="/contact"
-              className="border border-line text-ink text-sm font-medium px-6 py-3 rounded-md hover:bg-surface hover:border-cyan/40 transition-colors"
-            >
-              Get in touch
-            </Link>
-          </div>
-
-          <div
-            className="flex items-center gap-5 justify-center md:justify-start animate-fade-up"
-            style={{ animationDelay: '240ms' }}
-          >
-            {SOCIALS.map(({ href, icon: Icon, label }) => (
-              <a
-                key={href}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="text-muted hover:text-cyan transition-colors"
-              >
-                <Icon size={18} />
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <div className="animate-fade-up" style={{ animationDelay: '120ms' }}>
-          <div className="w-40 h-40 md:w-52 md:h-52 rounded-full p-[3px] bg-gradient-to-br from-violet to-cyan shadow-[0_0_40px_rgba(124,58,237,0.25)]">
-            <img
-              src="/headshot.png"
-              alt="Sushil Dangi"
-              className="w-full h-full rounded-full object-cover"
+            <LineReveal
+              as="h1"
+              lines={['Sushil', 'Dangi']}
+              className="t-hero w-max max-w-full"
+              immediate
             />
-          </div>
+
+            <span className="rule mt-8 text-paper" />
+
+            <p className="eyebrow eyebrow-wide mt-7 max-w-md text-paper/85 leading-[1.7]">
+              I luv 2 code. I luv 2 share what I learn.
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4">
+              <Link href="/work" className="cta-line">
+                Selected work <span className="arrow">↗</span>
+              </Link>
+              <Link href="/contact" className="cta-line muted">
+                Get in touch <span className="arrow">→</span>
+              </Link>
+            </div>
+          </Reveal>
+
+          {/* Portrait: monochrome, hairline frame offset like a mounted print */}
+          <Reveal immediate delay={200} className="hidden md:block">
+            <div className="relative mr-3 mb-3">
+              <div aria-hidden className="absolute -inset-3 border border-line translate-x-3 translate-y-3" />
+              <img
+                src="/headshot.png"
+                alt="Sushil Dangi"
+                width={240}
+                height={300}
+                className="portrait relative block h-[300px] w-[240px] object-cover object-top"
+              />
+            </div>
+          </Reveal>
         </div>
 
+        {/* Bottom-right lockup (reference: .op-brand) */}
+        <div className="absolute bottom-[var(--gutter-block)] right-[var(--gutter)] hidden sm:flex flex-col items-end gap-2 text-right">
+          <span className="eyebrow">Currently</span>
+          <span className="font-display text-xl leading-none text-paper">Senior Team Lead</span>
+          <span className="tracked text-faint text-[0.62rem]">Technoboost Services</span>
+        </div>
+
+        <ScrollHint className="absolute bottom-[var(--gutter-block)] left-1/2 -translate-x-1/2 hidden sm:flex" />
       </div>
     </section>
   )

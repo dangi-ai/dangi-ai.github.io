@@ -25,17 +25,20 @@ function monogram(name: string): string {
   return name.slice(0, 2).toUpperCase()
 }
 
+// Tile inside a 1px-gap group (the gap paints the hairlines).
+// Icons are monochrome until hovered, like the portrait.
 export function SkillCard({ skill }: SkillCardProps) {
   return (
-    <div className="card-glass p-3 flex flex-col items-center gap-2 min-w-[80px]">
-      <div className="w-8 h-8 flex items-center justify-center" aria-hidden>
+    <div className="hair-cell group flex min-w-[6.5rem] flex-col items-center gap-3 px-4 py-5 transition-colors duration-500 ease-soft hover:bg-paper/[0.03]">
+      <div className="flex h-8 w-8 items-center justify-center" aria-hidden>
         {skill.iconSlug ? (
           <img
             src={deviconUrl(skill.iconSlug)}
             alt=""
-            width={32}
-            height={32}
+            width={28}
+            height={28}
             loading="lazy"
+            className="portrait opacity-80 group-hover:opacity-100"
             onError={(e) => {
               const target = e.currentTarget
               target.style.display = 'none'
@@ -45,13 +48,13 @@ export function SkillCard({ skill }: SkillCardProps) {
           />
         ) : null}
         <span
-          className="w-8 h-8 rounded items-center justify-center bg-white/10 text-muted font-mono text-xs font-bold select-none"
+          className="h-8 w-8 items-center justify-center font-display text-lg text-paper/80 select-none"
           style={{ display: skill.iconSlug ? 'none' : 'flex' }}
         >
           {monogram(skill.name)}
         </span>
       </div>
-      <span className="font-mono text-[10px] text-ink text-center leading-tight font-semibold">
+      <span className={`tracked text-center text-[0.6rem] ${skill.primary ? 'text-paper' : 'text-muted'}`}>
         {skill.name}
       </span>
     </div>

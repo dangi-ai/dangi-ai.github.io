@@ -24,81 +24,61 @@ export function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close mobile menu on route change
-  useEffect(() => { setOpen(false) }, [pathname])
+  // Mobile menu closes when a link is chosen (see onClick below).
+  const close = () => setOpen(false)
+
+  const linkClass = (href: string) =>
+    `tracked text-[0.66rem] transition-colors duration-500 ease-soft ${
+      pathname === href ? 'text-paper' : 'text-faint hover:text-paper'
+    }`
 
   return (
     <nav
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-200 ${
-        scrolled
-          ? 'bg-bg/80 backdrop-blur-md border-b border-line'
-          : ''
+      className={`fixed top-0 inset-x-0 z-50 transition-[background-color,border-color] duration-500 ease-soft border-b ${
+        scrolled || open ? 'bg-ink/85 backdrop-blur-md border-line' : 'border-transparent'
       }`}
     >
-      <div className="max-w-5xl mx-auto px-8 h-16 flex items-center justify-between">
-        {/* Logo */}
+      <div className="page h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="font-mono font-bold text-ink text-sm tracking-tight hover:text-cyan transition-colors"
+          className="font-display text-2xl leading-none text-paper tracking-[-0.01em]"
         >
-          luv2code<span className="text-cyan">_</span>
+          luv2<em className="text-cream">code</em>
         </Link>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className={`text-sm transition-colors ${
-                pathname === href
-                  ? 'text-cyan font-semibold'
-                  : 'text-muted hover:text-ink'
-              }`}
-            >
+            <Link key={href} href={href} className={linkClass(href)}>
               {label}
             </Link>
           ))}
           <Link
             href="/contact"
-            className={`btn-gradient text-sm font-semibold px-3 py-1.5 rounded-md ${
-              pathname === '/contact' ? 'ring-1 ring-cyan' : ''
-            }`}
+            className={`cta-line text-[0.66rem] ${pathname === '/contact' ? '' : 'muted'}`}
           >
-            Contact
+            Contact <span className="arrow">→</span>
           </Link>
         </div>
 
-        {/* Mobile hamburger */}
         <button
-          className="md:hidden text-ink p-1"
+          className="md:hidden text-paper p-1"
           onClick={() => setOpen(o => !o)}
           aria-label={open ? 'Close menu' : 'Open navigation menu'}
           aria-expanded={open}
         >
-          {open ? <X size={20} /> : <Menu size={20} />}
+          {open ? <X size={20} strokeWidth={1.25} /> : <Menu size={20} strokeWidth={1.25} />}
         </button>
       </div>
 
-      {/* Mobile overlay */}
       {open && (
-        <div className="md:hidden bg-bg border-b border-line px-8 py-6 flex flex-col gap-5">
+        <div className="md:hidden page py-8 flex flex-col gap-6 border-t border-line">
           {NAV_LINKS.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className={`text-sm ${
-                pathname === href ? 'text-cyan font-semibold' : 'text-muted'
-              }`}
-            >
+            <Link key={href} href={href} className={linkClass(href)} onClick={close}>
               {label}
             </Link>
           ))}
-          <Link
-            href="/contact"
-            className="btn-gradient text-sm font-semibold px-3 py-2 rounded-md text-center"
-          >
-            Contact
+          <Link href="/contact" className="cta-line self-start" onClick={close}>
+            Contact <span className="arrow">→</span>
           </Link>
         </div>
       )}

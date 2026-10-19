@@ -3,23 +3,20 @@ const TECHS = [
   'AWS', 'GitHub Actions', 'Docker', 'JWT', 'HikariCP',
 ]
 
+// Single tracked line of tools separated by middle dots — no chips.
 export function TechStrip() {
   return (
-    <section className="border-b border-line py-6" aria-label="Technologies I work with">
-      <div className="max-w-5xl mx-auto px-8">
-        <p className="font-mono text-[10px] text-faint uppercase tracking-[0.2em] mb-4">
-          Hands-on with
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {TECHS.map(tech => (
-            <span
-              key={tech}
-              className="bg-surface border border-line text-muted font-mono text-xs px-3 py-1.5 rounded"
-            >
+    <section className="page pb-[var(--gutter-block)]" aria-label="Technologies I work with">
+      <div className="border-t border-line pt-8 md:grid md:grid-cols-[14rem_1fr] md:gap-8">
+        <p className="eyebrow mb-5 md:mb-0">Hands-on with</p>
+        <ul className="flex flex-wrap items-baseline gap-y-3">
+          {TECHS.map((tech, i) => (
+            <li key={tech} className="tracked text-muted flex items-baseline">
+              {i > 0 && <span aria-hidden className="mx-4 text-faint">·</span>}
               {tech}
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )
